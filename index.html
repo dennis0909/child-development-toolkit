@@ -217,7 +217,7 @@
 <div class="growth-layout"><section class="panel measurement-panel" aria-labelledby="form-title"><h2 id="form-title">這次的量測</h2><p class="panel-intro">0–2 歲請量躺姿身長，2 歲起量站立身高。</p>
 <form id="growth-form" autocomplete="off" novalidate><div class="form-grid measurement-inputs"><label>身高（cm）<div class="unit-input"><input name="height" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="105" required autocomplete="off"><span aria-hidden="true">cm</span></div></label><label>體重（kg）<div class="unit-input"><input name="weight" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="17" required autocomplete="off"><span aria-hidden="true">kg</span></div></label></div>
 <label class="filter-label">量測日期<input name="measured" type="date" required autocomplete="off"></label>
-<details class="profile-details"><summary>基本資料<span class="profile-summary" id="profile-summary">男 · 尚未填生日 · 點此修改</span></summary><div class="form-grid"><label>出生日期<input name="birth" type="date" required autocomplete="off"></label><label>曲線類別（生理性別）<select name="sex" required><option value="boys" selected>男</option><option value="girls">女</option></select></label></div><button type="button" id="forget-birth" class="reset-button">忘記這個瀏覽器中的生日資料</button></details>
+<details class="profile-details"><summary>基本資料<span class="profile-summary" id="profile-summary">男 · 尚未填生日 · 點此修改</span></summary><div class="form-grid"><label>暱稱（選填，建議不要用真名）<input name="nickname" maxlength="20" autocomplete="off" placeholder="例如：小寶"></label><label>出生日期<input name="birth" type="date" required autocomplete="off"></label><label>曲線類別（生理性別）<select name="sex" required><option value="boys" selected>男</option><option value="girls">女</option></select></label></div><button type="button" id="forget-birth" class="reset-button">忘記這個瀏覽器中的生日資料</button></details>
 <div class="actions"><button class="button primary" type="submit">查看百分位 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></button><button class="button" type="button" id="save-record">存入紀錄</button><button class="button" type="reset">清除量測</button></div><p class="privacy-note">生日、已存入的量測紀錄只保存在這個瀏覽器，不會傳送；沒按「存入紀錄」的輸入不會進入紀錄</p></form></section>
 <div class="growth-output"><p id="notice" class="notice" role="status" aria-live="polite"></p><div id="growth-empty" class="panel growth-empty"><svg class="play-art" viewBox="0 0 400 300" fill="none" aria-hidden="true">
 <ellipse cx="207" cy="258" rx="160" ry="13" fill="#dce4d8"/>
@@ -256,7 +256,7 @@
 <p id="sync-msg" class="hb-note" role="status" aria-live="polite"></p>
 <details class="reading-help"><summary>同步怎麼運作？隱私與風險</summary><ul>
 <li>同步碼是在這台裝置隨機產生的 128 位元金鑰，不會傳給伺服器；伺服器只拿到由它推導出的編號，和加密後的資料。</li>
-<li>加密的內容包含性別、出生日期，以及每次量測的日期、身高、體重。伺服器看不到明文，也沒有你的姓名或帳號。</li>
+<li>加密的內容包含暱稱、性別、出生日期，以及每次量測的日期、身高、體重。伺服器看不到明文，也沒有你的帳號；暱稱請用小名，不要用真名。</li>
 <li>伺服器仍然看得到：連線的 IP 位址（雲端平台一般都會）、資料大小與更新時間。</li>
 <li>知道同步碼的人都能讀取並修改這份紀錄，請像密碼一樣保管。同步碼弄丟了無法找回，但這台裝置上的紀錄還在，可以重新建立。</li>
 <li>兩台裝置同時修改時，同一天的紀錄以較晚修改的為準；刪除也會同步。</li>
@@ -1272,13 +1272,13 @@
   function restoreMeasurements(){form.elements.height.value=storedMeasurement(HEIGHT_KEY);form.elements.weight.value=storedMeasurement(WEIGHT_KEY);}
   function rememberMeasurement(element,key){try{const number=Number(element.value);if(element.value&&Number.isFinite(number)&&number>0)localStorage.setItem(key,element.value);else if(!element.value)localStorage.removeItem(key);}catch(error){}}
   function forgetMeasurements(){try{localStorage.removeItem(HEIGHT_KEY);localStorage.removeItem(WEIGHT_KEY);}catch(error){}}
-  function profile(){const birth=form.elements.birth.value,description=validBirth(birth)?`${birth.replaceAll('-','/')} 出生`:'尚未填生日';document.getElementById('profile-summary').textContent=`${form.elements.sex.value==='boys'?'男':'女'} · ${description} · 點此修改`;forget.disabled=!birth;}
+  function profile(){const birth=form.elements.birth.value,description=validBirth(birth)?`${birth.replaceAll('-','/')} 出生`:'尚未填生日';const nick=form.elements.nickname.value.trim();document.getElementById('profile-summary').textContent=`${nick?nick+' · ':''}${form.elements.sex.value==='boys'?'男':'女'} · ${description} · 點此修改`;forget.disabled=!birth;}
   function hideResults(){result.hidden=true;empty.hidden=false;document.getElementById('notice').textContent='';}
   restoreBirth();restoreMeasurements();profile();
   form.elements.birth.addEventListener('change',rememberBirth);
   form.elements.height.addEventListener('input',()=>rememberMeasurement(form.elements.height,HEIGHT_KEY));
   form.elements.weight.addEventListener('input',()=>rememberMeasurement(form.elements.weight,WEIGHT_KEY));
-  form.addEventListener('input',()=>{hideResults();profile();});
+  form.addEventListener('input',e=>{if(!e.target||e.target.name!=='nickname')hideResults();profile();});
   form.addEventListener('submit',()=>{empty.hidden=!result.hidden;if(!result.hidden&&innerWidth<=1000)requestAnimationFrame(()=>document.querySelector('.growth-output').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth',block:'start'}));});
   form.addEventListener('reset',()=>{forgetMeasurements();hideResults();setTimeout(()=>{restoreBirth();profile();},0);});
   forget.addEventListener('click',()=>{try{localStorage.removeItem(BIRTH_KEY);}catch(error){}form.elements.birth.value='';hideResults();profile();document.getElementById('notice').textContent='已從這個瀏覽器移除生日資料。';form.elements.birth.focus();});
@@ -1296,7 +1296,7 @@
   const Z = [-1.880794, -1.036433, 0, 1.036433, 1.880794], PR = ['P3', 'P15', 'P50', 'P85', 'P97'];
   const LAST_REFERENCE = {height: 228, weight: 120, bmi: 228}, MAX_MONTHS = 972;
   const UNIT = {height: 'cm', weight: 'kg', bmi: 'kg/m²'}, LABEL = {height: '身高', weight: '體重', bmi: 'BMI'};
-  let records = [], tomb = [], metric = 'height', mu = 0, applying = false;
+  let records = [], tomb = [], metric = 'height', mu = 0, applying = false, nick = '';
   const listeners = [], TOMB_KEEP_MS = 400 * 24 * 3600 * 1000;
 
   const positive = v => { if (v === '' || v === null || v === undefined) return null; const n = Number(v); return Number.isFinite(n) && n > 0 ? n : null; };
@@ -1314,6 +1314,11 @@
     return out;
   }
   // Takes live records and tombstones together. A deleted date stays deleted unless a newer edit re-created it.
+  const cleanNick = v => String(v === undefined || v === null ? '' : v).replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, 20);
+  // Writing the field from code must refresh the profile summary line, which listens for input events.
+  // The summary line above the form listens for input events; dispatching on the nickname field refreshes it without hiding results.
+  const refreshProfile = () => form.elements.nickname.dispatchEvent(new Event('input', {bubbles: true}));
+  const setNick = v => { nick = cleanNick(v); form.elements.nickname.value = nick; refreshProfile(); };
   function setRecords(list) {
     const byDate = new Map();
     list.map(clean).filter(Boolean).forEach(r => {
@@ -1333,18 +1338,19 @@
         setRecords(saved.records);
         mu = Number.isFinite(saved.mu) ? saved.mu : 0;
         if (saved.sex === 'boys' || saved.sex === 'girls') form.elements.sex.value = saved.sex;
+        setNick(saved.nick);
       }
     } catch (error) { records = []; tomb = []; }
   }
   function persist() {
     let ok = true;
-    try { localStorage.setItem(KEY, JSON.stringify({v: 2, sex: form.elements.sex.value, mu, records: records.concat(tomb)})); }
+    try { localStorage.setItem(KEY, JSON.stringify({v: 2, sex: form.elements.sex.value, nick, mu, records: records.concat(tomb)})); }
     catch (error) { ok = false; ioMsg.textContent = '這個瀏覽器不允許保存資料，紀錄只會留到關閉頁面；請先匯出備份。'; }
     if (!applying) listeners.forEach(fn => fn());
     return ok;
   }
-  const snapshot = () => ({version: 1, sex: form.elements.sex.value, birth: form.elements.birth.value || null, records: records.map(({d, h, w}) => ({d, h, w}))});
-  const fullSnapshot = () => ({version: 2, sex: form.elements.sex.value, birth: form.elements.birth.value || null, mu, records: records.concat(tomb).map(r => ({...r}))});
+  const snapshot = () => ({version: 1, nick, sex: form.elements.sex.value, birth: form.elements.birth.value || null, records: records.map(({d, h, w}) => ({d, h, w}))});
+  const fullSnapshot = () => ({version: 2, nick, sex: form.elements.sex.value, birth: form.elements.birth.value || null, mu, records: records.concat(tomb).map(r => ({...r}))});
 
   function ageText(age) {
     const whole = Math.floor(age), y = Math.floor(whole / 12), m = whole % 12;
@@ -1566,6 +1572,7 @@
   function renderRaw() { if (document.activeElement !== rawBox) rawBox.value = JSON.stringify(snapshot(), null, 2); }
   function renderAll() {
     tabs.forEach(t => t.setAttribute('aria-pressed', String(t.dataset.trend === metric)));
+    $('records-title').textContent = nick ? `${nick} 的成長紀錄與趨勢` : '成長紀錄與趨勢';
     renderTable(); renderChart(); renderSummary(); renderYearly(); renderRaw();
   }
   function commit() { setRecords(records.concat(tomb)); persist(); renderAll(); }
@@ -1582,9 +1589,11 @@
     setRecords((merge ? records : []).concat(tomb, valid));
     if (data && !Array.isArray(data)) {
       if (data.sex === 'boys' || data.sex === 'girls') { form.elements.sex.value = data.sex; mu = Date.now(); }
+      if (typeof data.nick === 'string' && (!merge || !nick)) { setNick(data.nick); mu = Date.now(); }
       const birth = data.birth && validDate(data.birth);
       if (birth && (!merge || !form.elements.birth.value)) { form.elements.birth.value = birth; mu = Date.now(); form.elements.birth.dispatchEvent(new Event('change', {bubbles: true})); }
     }
+    refreshProfile();
     persist(); renderAll();
     return {count: valid.length, skipped};
   }
@@ -1634,6 +1643,22 @@
     catch (error) { rawMsg.className = 'hb-note error'; rawMsg.textContent = `JSON 有誤，未套用：${error.message}`; }
   });
   $('raw-reset').addEventListener('click', () => { rawBox.blur(); renderRaw(); rawMsg.textContent = ''; });
+  form.elements.nickname.addEventListener('change', () => {
+    const next = cleanNick(form.elements.nickname.value);
+    const changed = next !== nick;
+    setNick(next);
+    if (changed) { mu = Date.now(); persist(); }
+    renderAll();
+  });
+  // "Clear measurement" resets every field, which would silently flip a saved girl back to the default "boys".
+  form.addEventListener('reset', () => setTimeout(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved && (saved.sex === 'boys' || saved.sex === 'girls')) form.elements.sex.value = saved.sex;
+      form.elements.nickname.value = cleanNick(saved && saved.nick);
+    } catch (error) { /* keep the defaults */ }
+    form.dispatchEvent(new Event('input', {bubbles: true}));
+  }, 0));
   ['birth', 'sex'].forEach(name => form.elements[name].addEventListener('change', () => { if (!applying) { mu = Date.now(); persist(); } renderAll(); }));
   // Used by the optional sync module; apply() takes a merged snapshot without re-stamping it.
   window.GrowthStore = {
@@ -1644,8 +1669,10 @@
       try {
         setRecords(s.records || []);
         if (s.sex === 'boys' || s.sex === 'girls') form.elements.sex.value = s.sex;
+        setNick(s.nick);
         if (s.birth && validDate(s.birth)) { form.elements.birth.value = s.birth; form.elements.birth.dispatchEvent(new Event('change', {bubbles: true})); }
         mu = s.mu || 0;
+        refreshProfile();
         persist(); renderAll();
       } finally { applying = false; }
     },
@@ -1720,7 +1747,7 @@
   const sortedRecords = list => list.slice().sort((a, b) => a.d.localeCompare(b.d));
   function canonical(snapshot) {
     return JSON.stringify({
-      sex: snapshot.sex || null, birth: snapshot.birth || null, mu: snapshot.mu || 0,
+      sex: snapshot.sex || null, birth: snapshot.birth || null, nick: snapshot.nick || '', mu: snapshot.mu || 0,
       records: sortedRecords(snapshot.records || []).map(r => [r.d, r.h === undefined ? null : r.h, r.w === undefined ? null : r.w, stamp(r), r.x ? 1 : 0]),
     });
   }
@@ -1733,7 +1760,7 @@
       if (!current || stamp(r) > stamp(current) || (stamp(r) === stamp(current) && JSON.stringify([r.h, r.w, r.x]) > JSON.stringify([current.h, current.w, current.x]))) byDate.set(r.d, r);
     }
     const meta = (b.mu || 0) > (a.mu || 0) ? b : a;
-    return {version: 2, sex: meta.sex || a.sex || b.sex || null, birth: meta.birth || a.birth || b.birth || null, mu: Math.max(a.mu || 0, b.mu || 0), records: sortedRecords([...byDate.values()])};
+    return {version: 2, nick: typeof meta.nick === 'string' ? meta.nick : (a.nick || b.nick || ''), sex: meta.sex || a.sex || b.sex || null, birth: meta.birth || a.birth || b.birth || null, mu: Math.max(a.mu || 0, b.mu || 0), records: sortedRecords([...byDate.values()])};
   }
 
   const api = {generateCode, parseCode, deriveKeys, encrypt, decrypt, merge, equal, canonical, CODE_CHARS};
