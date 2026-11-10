@@ -280,7 +280,7 @@
 <p class="privacy-note">紀錄只存在這個瀏覽器。若在本頁身高體重區開啟同步，會一起加密同步。</p></form></section>
 <div class="growth-output"><div id="eye-empty" class="panel growth-empty"><h2>從第一筆檢查開始。</h2><p>存入驗光或眼軸資料後，這裡會顯示兩眼的最新數字與趨勢。</p></div>
 <div id="eye-summary" class="results" hidden></div>
-<section class="panel chart-card"><h3>度數趨勢</h3><p class="muted">實心點是散瞳驗光，空心點是未散瞳；線只連散瞳結果，因為未散瞳的數字常會上下跳動。</p><p id="eye-chart-se-status" class="chart-status"></p><svg id="eye-chart-se" role="img" aria-label="兩眼度數趨勢"></svg><div class="eye-legend"><span><i style="background:#2a7f78;border-color:#2a7f78"></i>右眼</span><span><i style="background:#d98618;border-color:#d98618"></i>左眼</span><span><i style="background:#fff;border-color:#888"></i>未散瞳</span></div></section>
+<section class="panel chart-card"><h3>度數趨勢</h3><p class="muted">實心點是散瞳驗光，空心點是未散瞳；線只連散瞳結果，因為未散瞳的數字常會上下跳動。</p><p id="eye-chart-se-status" class="chart-status"></p><svg id="eye-chart-se" role="img" aria-label="兩眼度數趨勢"></svg><div class="eye-legend"><span><i style="background:#2a7f78;border-color:#2a7f78"></i>右眼</span><span><i style="background:#d98618;border-color:#d98618"></i>左眼</span><span><i style="background:#fff;border-color:#888"></i>未散瞳</span><span><i style="background:#2e8b5733;border-color:#2e8b5733;border-radius:2px"></i>國健署同齡遠視參考（需填出生日期）</span></div></section>
 <section class="panel chart-card"><h3>眼軸趨勢</h3><p class="muted">看的是一段時間內長得快不快，單次數字的意義有限。</p><p id="eye-chart-al-status" class="chart-status"></p><svg id="eye-chart-al" role="img" aria-label="兩眼眼軸趨勢"></svg></section>
 <section class="panel chart-card"><h3>歷次紀錄</h3><p id="eye-table-empty" class="muted">尚無紀錄。</p><div class="table-scroll"><table class="eye-table"><thead><tr><th>日期</th><th>診所</th><th>方式</th><th>度數 右／左</th><th>眼軸 右／左</th><th>角膜曲率 右／左</th><th>備註</th><th></th></tr></thead><tbody id="eye-body"></tbody></table></div><div class="actions"><button type="button" class="button quiet" id="eye-export">匯出 JSON 備份</button></div></section>
 <details class="reading-help"><summary>怎麼看這些數字？</summary>
@@ -288,7 +288,10 @@
 <p><b>眼軸。</b>眼軸是眼球前後的長度。兒童的近視多半來自眼軸變長；眼軸直接量長度，不受孩子當下用不用力影響，所以適合長期追蹤。重點是一段時間內的變化速度，而不是單一數字。</p>
 <p><b>角膜曲率與 AL/CR。</b>度數取決於眼軸和角膜弧度的搭配；同樣的眼軸，角膜比較平的眼睛度數會比較偏遠視。AL/CR 是眼軸除以角膜曲率半徑，同一次檢查兩者都有時，這裡才會計算。</p>
 <p><b>遠視儲備。</b>幼兒多半有輕度遠視，隨著長大會慢慢減少。這份儲備用得比預期快，可能是將來近視的早期訊號，需要由眼科醫師依年齡判讀。</p>
-<p>這一頁只整理與畫出你輸入的數字，不提供同齡參考值，也不做診斷；有疑慮時，帶著驗光單與這份紀錄詢問兒童眼科醫師。</p></details></div></div></div><div id="dental" class="vision-block"><div class="section-head vision-head"><div><p class="eyebrow">BRIGHT SMILES</p><h2>牙齒塗氟紀錄</h2><p>記下每次塗氟；下次建議日期以上次加 6 個月計算，實際間隔請依牙醫建議。</p></div><a href="#growth">回到上方 ↑</a></div><div class="growth-layout"><section class="panel measurement-panel" aria-labelledby="dental-form-title"><h2 id="dental-form-title">這次塗氟</h2><form id="dental-form" autocomplete="off" novalidate><div class="form-grid"><label>塗氟日期<input name="d" type="date" required></label><label>診所（選填）<input name="c" maxlength="20" placeholder="例如：社區牙醫"></label></div><label class="filter-label">備註（選填）<input name="n" maxlength="80" placeholder="例如：順便檢查蛀牙"></label><div class="actions"><button type="submit" class="button primary">存入紀錄</button></div><p id="dental-msg" class="privacy-note" role="status" aria-live="polite"></p><p class="privacy-note">紀錄只存在這個瀏覽器，開啟同步後會一起加密同步。</p></form></section><div class="growth-output"><section class="panel chart-card" id="dental-next"><h3>下次塗氟</h3><p id="dental-due" class="dental-due">尚無紀錄</p><p id="dental-status" class="muted"></p><button type="button" class="button primary" id="dental-calendar" disabled>加到 iPhone 行事曆</button><p class="muted">用 iPhone 的 Safari 開啟本頁，按下後選「加入行事曆」；會在下次日期的一週前早上 9 點提醒。在 LINE 等 App 內開啟可能無法加入，請改用 Safari。其他瀏覽器會下載 .ics 檔，可匯入 Google 或 Outlook 行事曆。</p></section><section class="panel chart-card"><h3>歷次紀錄</h3><p id="dental-empty" class="muted">尚無紀錄。</p><div class="table-scroll"><table class="eye-table"><thead><tr><th>日期</th><th>診所</th><th>備註</th><th></th></tr></thead><tbody id="dental-body"></tbody></table></div></section></div></div></div></section>
+<p><b>同齡遠視參考（國健署）。</b>下表是衛福部國民健康署建議各年齡應有的遠視度數（遠視儲備量），以散瞳驗光為準，所以本頁只拿散瞳結果和它比較；圖上的淡綠色區帶就是這個範圍。眼軸沒有官方的同齡參考值，這裡不提供。</p>
+<table class="eye-table"><thead><tr><th>年齡</th><th>應有的遠視度數</th></tr></thead><tbody><tr><td>0–3 歲</td><td>+1.50 ～ +2.00 D（150–200 度）</td></tr><tr><td>4–6 歲</td><td>+1.00 ～ +2.00 D（100–200 度）</td></tr><tr><td>7–8 歲</td><td>約 +1.00 D（100 度）</td></tr><tr><td>9–12 歲</td><td>至少 +0.50 D（50 度以上）</td></tr></tbody></table>
+<ul><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=864&amp;pid=16408" target="_blank" rel="noopener noreferrer">國健署：守護孩子的遠宇宙 遠視儲備量夠不夠?（海報）</a></li><li><a href="https://www.mohw.gov.tw/cp-5275-72872-1.html" target="_blank" rel="noopener noreferrer">衛福部新聞稿：儲備遠視量 破解近視迷思（2022-12-20）</a></li></ul>
+<p>參考範圍不是診斷標準；低於範圍代表值得追蹤，請帶著驗光單與這份紀錄詢問兒童眼科醫師。</p></details></div></div></div><div id="dental" class="vision-block"><div class="section-head vision-head"><div><p class="eyebrow">BRIGHT SMILES</p><h2>牙齒塗氟紀錄</h2><p>記下每次塗氟；下次建議日期以上次加 6 個月計算，實際間隔請依牙醫建議。</p></div><a href="#growth">回到上方 ↑</a></div><div class="growth-layout"><section class="panel measurement-panel" aria-labelledby="dental-form-title"><h2 id="dental-form-title">這次塗氟</h2><form id="dental-form" autocomplete="off" novalidate><div class="form-grid"><label>塗氟日期<input name="d" type="date" required></label><label>診所（選填）<input name="c" maxlength="20" placeholder="例如：社區牙醫"></label></div><label class="filter-label">備註（選填）<input name="n" maxlength="80" placeholder="例如：順便檢查蛀牙"></label><div class="actions"><button type="submit" class="button primary">存入紀錄</button></div><p id="dental-msg" class="privacy-note" role="status" aria-live="polite"></p><p class="privacy-note">紀錄只存在這個瀏覽器，開啟同步後會一起加密同步。</p></form></section><div class="growth-output"><section class="panel chart-card" id="dental-next"><h3>下次塗氟</h3><p id="dental-due" class="dental-due">尚無紀錄</p><p id="dental-status" class="muted"></p><button type="button" class="button primary" id="dental-calendar">設定行事曆提醒</button><p id="dental-remind" class="muted"></p><p class="muted">用 iPhone 的 Safari 開啟本頁，按下後選「加入行事曆」；會在下次日期的一個月前早上 9 點提醒（已不到一個月時，改在當天早上 9 點）。在 LINE 等 App 內開啟可能無法加入，請改用 Safari。其他瀏覽器會下載 .ics 檔，可匯入 Google 或 Outlook 行事曆。</p></section><section class="panel chart-card"><h3>歷次紀錄</h3><p id="dental-empty" class="muted">尚無紀錄。</p><div class="table-scroll"><table class="eye-table"><thead><tr><th>日期</th><th>診所</th><th>備註</th><th></th></tr></thead><tbody id="dental-body"></tbody></table></div></section></div></div></div></section>
 <section class="view" id="resources" data-title="線上資源"><div class="page-heading"><div><p class="eyebrow">GOOD THINGS TO EXPLORE</p><h1>給家長的口袋資源</h1><p class="section-lead">27 筆語言、遊戲、蒙特梭利與發展資源。先看用途，需要時再展開年齡、語言與列印資訊。</p></div></div><div class="filters"><div class="filter-row"><div class="search-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg><label class="sr-only" for="resource-search">搜尋資源</label><input id="resource-search" type="search" placeholder="搜尋資源、機構或主題" autocomplete="off"></div><div class="select-wrap"><label class="sr-only" for="resource-domain">資源領域</label><select id="resource-domain"><option value="all">所有領域</option><option value="montessori">蒙特梭利</option><option value="language">語言</option>
 <option value="chinese">中文</option>
 <option value="english">英文</option>
@@ -1912,13 +1915,36 @@
     return {mmPerYear: Math.round(((last[key] - first[key]) / (days / 365.25)) * 1000) / 1000, from: first.d, to: last.d, days: Math.round(days)};
   }
 
+  // 衛福部國民健康署「守護孩子的遠宇宙 遠視儲備量夠不夠?」(2022-12, updated 2024-11): physiological
+  // hyperopia by age, measured with cycloplegic refraction. `to` is exclusive, in completed years.
+  const RESERVE = [
+    {from: 0, to: 4, lo: 1.5, hi: 2.0, label: '0–3 歲：+1.50 ～ +2.00 D'},
+    {from: 4, to: 7, lo: 1.0, hi: 2.0, label: '4–6 歲：+1.00 ～ +2.00 D'},
+    {from: 7, to: 9, lo: 1.0, hi: 1.0, label: '7–8 歲：約 +1.00 D'},
+    {from: 9, to: 13, lo: 0.5, hi: null, label: '9–12 歲：至少 +0.50 D'},
+  ];
+  // Completed years on `iso`, by calendar date (a birthday counts on the day itself).
+  function ageYears(birth, iso) {
+    if (!validDate(birth) || !validDate(iso) || iso < birth) return null;
+    const [by, bm, bd] = birth.split('-').map(Number), [y, m, d] = iso.split('-').map(Number);
+    return y - by - (m < bm || (m === bm && d < bd) ? 1 : 0);
+  }
+  const reserveFor = (birth, iso) => { const a = ageYears(birth, iso); return a === null ? null : RESERVE.find(b => a >= b.from && a < b.to) || null; };
+  function reserveStatus(se, band) {
+    if (se === null || se === undefined || !band) return null;
+    if (se < band.lo) return 'below';
+    if (band.hi !== null && se > band.hi) return 'above';
+    return 'within';
+  }
+
   const newId = () => {
     const bytes = new Uint8Array(8);
     (root.crypto || globalThis.crypto).getRandomValues(bytes);
     return Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
   };
 
-  const api = {clean, merge, canonical, live, ratio, growthRate, newId, MIN_RATE_DAYS, mergeWith, text, validDate, stamp};
+  const api = {clean, merge, canonical, live, ratio, growthRate, newId, MIN_RATE_DAYS, mergeWith, text, validDate, stamp,
+    RESERVE, ageYears, reserveFor, reserveStatus};
   if (typeof module === 'object' && module.exports) module.exports = api; else root.EyeCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);
 
@@ -1938,6 +1964,9 @@
   const fmtSe = v => (v === null ? '—' : `${v > 0 ? '+' : ''}${v.toFixed(2)}`);
   const degree = v => (v === null ? '' : v === 0 ? '0 度' : `${v > 0 ? '遠視' : '近視'} ${Math.round(Math.abs(v) * 100)} 度`);
   const fmtMm = v => (v === null ? '—' : v.toFixed(2));
+  const birthInput = document.querySelector('#growth-form [name=birth]');
+  const birth = () => (birthInput && E.validDate(birthInput.value) ? birthInput.value : null);
+  const STATUS = {below: '低於國健署參考範圍，請與眼科醫師討論', within: '在國健署參考範圍內', above: '高於國健署參考範圍，請與眼科醫師討論'};
 
   function load() {
     try {
@@ -1996,10 +2025,16 @@
     ['r', 'l'].forEach(eye => {
       const s = eye + 's', a = eye + 'a', k = eye + 'k';
       const cy = latest(s, true), any = latest(s, false), al = latest(a, false), kr = latest(k, false);
+      const b = birth(), band = cy && b ? E.reserveFor(b, cy.d) : null, status = cy && band ? E.reserveStatus(cy[s], band) : null;
+      const reference = !b ? ['國健署同齡參考（散瞳）', '—', '在身高體重區填出生日期後顯示']
+        : !cy ? ['國健署同齡參考（散瞳）', '—', '需要散瞳驗光結果才能比較']
+        : !band ? ['國健署同齡參考（散瞳）', '—', '國健署參考只到 12 歲']
+        : ['國健署同齡參考（散瞳）', band.label.split('：')[1], `${band.label.split('：')[0]}　${STATUS[status]}`];
       const rate = E.growthRate(all, eye);
       const ratio = al && kr && al.d === kr.d ? E.ratio(al[a], kr[k]) : null;
       box.append(card(EYE[eye], [
         ['最近一次散瞳度數', cy ? `${fmtSe(cy[s])} D` : '尚無', cy ? `${cy.d}　${degree(cy[s])}` : '散瞳驗光較能反映真實度數'],
+        reference,
         ['最近一次度數（含未散瞳）', any ? `${fmtSe(any[s])} D` : '尚無', any ? `${any.d}　${any.cy ? '散瞳' : '未散瞳'}` : ''],
         ['最近一次眼軸', al ? `${fmtMm(al[a])} mm` : '尚無', al ? al.d : ''],
         ['眼軸／角膜曲率半徑（AL/CR）', ratio === null ? '—' : ratio.toFixed(2), ratio === null ? '同一天有眼軸與角膜曲率才計算' : '請由醫師判讀'],
@@ -2023,7 +2058,9 @@
     let t0 = Math.min(...pts.map(p => p.t)), t1 = Math.max(...pts.map(p => p.t));
     if (t1 - t0 < 30 * 864e5) { t0 -= 15 * 864e5; t1 += 15 * 864e5; }
     const edge = (t1 - t0) * 0.05; t0 -= edge; t1 += edge;
-    let v0 = Math.min(...pts.map(p => p.v)), v1 = Math.max(...pts.map(p => p.v));
+    const bands = opts.reserve ? reserveSpans(t0, t1) : [];
+    const vals = pts.map(p => p.v).concat(...bands.map(b => [b.lo, b.hi === null ? b.lo + 0.5 : b.hi]));
+    let v0 = Math.min(...vals), v1 = Math.max(...vals);
     const pad = Math.max((v1 - v0) * 0.15, opts.minSpan / 2);
     v0 -= pad; v1 += pad;
     const x = t => L + ((t - t0) / (t1 - t0)) * (W - L - R), y = v => T + (1 - (v - v0) / (v1 - v0)) * (H - T - B);
@@ -2032,6 +2069,12 @@
       svg.append(svgEl('line', {x1: L, x2: W - R, y1: y(g), y2: y(g), stroke: '#e6e9e1'}));
       svg.append(svgEl('text', {x: L - 6, y: y(g) + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#6b7468'}, opts.label(g)));
     }
+    bands.forEach(b => {
+      const top = b.hi === null ? v1 : Math.max(b.hi, b.lo + 0.05), x0 = x(b.t0), x1 = x(b.t1);
+      const r = svgEl('rect', {x: x0, y: y(top), width: Math.max(1, x1 - x0), height: Math.max(2, y(b.lo) - y(top)), fill: '#2e8b57', 'fill-opacity': 0.12, 'data-reserve': b.label});
+      r.append(svgEl('title', {}, `國健署參考 ${b.label}`));
+      svg.append(r);
+    });
     if (opts.zero && v0 < 0 && v1 > 0) svg.append(svgEl('line', {x1: L, x2: W - R, y1: y(0), y2: y(0), stroke: '#9aa597', 'stroke-dasharray': '4 3'}));
     const months = [];
     for (let d = new Date(t0); d.getTime() <= t1; d = new Date(d.getFullYear(), d.getMonth() + 1, 1)) months.push(new Date(d.getFullYear(), d.getMonth(), 1).getTime());
@@ -2053,10 +2096,19 @@
     });
   }
 
+  // The age bands that cover [t0, t1], cut at the child's birthdays.
+  function reserveSpans(t0, t1) {
+    const b = birth();
+    if (!b) return [];
+    const [by, bm, bd] = b.split('-').map(Number);
+    return E.RESERVE.map(r => ({...r, t0: Math.max(t0, new Date(by + r.from, bm - 1, bd).getTime()), t1: Math.min(t1, new Date(by + r.to, bm - 1, bd).getTime())}))
+      .filter(r => r.t1 > r.t0);
+  }
+
   function renderAll() {
     renderTable();
     renderSummary();
-    chart($('eye-chart-se'), 's', 'D', {minSpan: 1, zero: true, lineCyOnly: true, hollowNonCy: true,
+    chart($('eye-chart-se'), 's', 'D', {minSpan: 1, zero: true, lineCyOnly: true, hollowNonCy: true, reserve: true,
       step: span => (span > 4 ? 1 : span > 2 ? 0.5 : 0.25), label: v => `${v > 0 ? '+' : ''}${v.toFixed(2)}`});
     chart($('eye-chart-al'), 'a', 'mm', {minSpan: 0.4, step: span => (span > 2 ? 0.5 : span > 0.8 ? 0.2 : 0.1), label: v => v.toFixed(1)});
   }
@@ -2093,6 +2145,7 @@
   const shown = () => location.hash === '#vision' || location.hash === '#growth';
   window.addEventListener('hashchange', () => { if (shown()) renderAll(); });
   window.addEventListener('resize', () => { if (shown()) renderAll(); });
+  if (birthInput) birthInput.addEventListener('change', renderAll);
   load(); renderAll();
 })();
 
@@ -2144,8 +2197,16 @@
     return out.join('\r\n ');
   }
   const compact = iso => iso.replace(/-/g, '');
+  // One calendar month before the due date at 09:00 local time; if that has passed, 09:00 on the due date.
+  function reminderAt(due, now) {
+    const at = iso => { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d, 9, 0, 0); };
+    const early = at(addMonths(due, -1));
+    return early.getTime() > now ? early : at(due);
+  }
+  const utcStamp = date => date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
   function ics(due, {last, uid, now}) {
-    const stampUtc = new Date(now).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    const remind = reminderAt(due, now);
+    const stampUtc = utcStamp(new Date(now));
     const lines = [
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//child-development-toolkit//records//ZH-TW',
       'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
@@ -2154,8 +2215,8 @@
       `SUMMARY:${esc('兒童牙齒塗氟（半年回診）')}`,
       `DESCRIPTION:${esc(`上次塗氟：${last}。記得預約牙醫。`)}`,
       'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${esc('兒童牙齒塗氟，記得預約')}`,
-      // An all-day event starts at 00:00; -P6DT15H is 09:00 seven days earlier.
-      'TRIGGER:-P6DT15H', 'END:VALARM',
+      // RFC 5545 durations have no months, so a calendar month needs an absolute trigger.
+      `TRIGGER;VALUE=DATE-TIME:${utcStamp(remind)}`, 'END:VALARM',
       'END:VEVENT', 'END:VCALENDAR',
     ];
     return lines.map(fold).join('\r\n') + '\r\n';
@@ -2168,7 +2229,7 @@
   // iPadOS reports itself as a Mac; a touch screen tells them apart.
   const isAppleMobile = (ua, platform, touchPoints) => /iP(hone|ad|od)/.test(ua || '') || (platform === 'MacIntel' && (touchPoints || 0) > 1);
 
-  const api = {clean, merge, canonical, live, addMonths, nextDue, ics, fold, isAppleMobile, INTERVAL_MONTHS};
+  const api = {clean, merge, canonical, live, addMonths, nextDue, ics, fold, isAppleMobile, reminderAt, INTERVAL_MONTHS};
   if (typeof module === 'object' && module.exports) module.exports = api; else root.DentalCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);
 
@@ -2201,7 +2262,7 @@
     due = D.nextDue(all, today());
     const box = $('dental-next');
     box.classList.toggle('overdue', !!due && due.daysLeft < 0);
-    calendar.disabled = !due;
+    $('dental-remind').textContent = due ? `提醒日：${(d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`)(D.reminderAt(due.due, Date.now()))} 早上 9 點` : '';
     if (!due) {
       $('dental-due').textContent = '尚無紀錄';
       $('dental-status').textContent = '存入第一次塗氟後，這裡會顯示下次建議日期。';
@@ -2244,7 +2305,7 @@
     setTimeout(() => URL.revokeObjectURL(url), 60000);
   }
   calendar.addEventListener('click', () => {
-    if (!due) return;
+    if (!due) { $('dental-remind').textContent = '請先在上方存入一筆塗氟紀錄，才能算出下次日期。'; return; }
     deliver(D.ics(due.due, {last: due.last, uid: E.newId(), now: Date.now()}), `fluoride-${due.due}.ics`);
     msg.textContent = '';
   });
