@@ -257,7 +257,7 @@
 <div id="sync-off"><div class="actions"><button type="button" class="button primary" id="sync-create">開啟同步</button></div><form id="sync-join-form" class="hb-form join-code-form" novalidate><label>家人給了邀請碼？在這裡輸入<input id="sync-join-input" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="24"></label><button type="submit" class="button">加入</button></form><p class="hb-note">已經有家人在同步？請對方在他的裝置按「邀請家人」，再開啟他給你的連結、掃 QR code，或在上方輸入邀請碼（5 分鐘內有效，只能用一次）。</p>
 <details class="sync-restore"><summary>換了裝置、之前的資料連不上？用備援碼還原</summary><form id="sync-link-form" class="hb-form" novalidate><label>備援碼<input id="sync-code-input" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XX"></label><button class="button" type="submit">用備援碼還原</button></form></details></div>
 <div id="sync-on" hidden><p id="sync-state" class="hb-note"></p><div class="actions"><button type="button" class="button primary" id="sync-now">立即同步</button><button type="button" class="button" id="sync-invite">邀請家人</button><button type="button" class="reset-button" id="sync-disable">停用並刪除雲端資料</button></div>
-<div id="invite-box" class="invite-box" hidden><p class="hb-note">把下面的連結傳給家人，或請對方用手機掃 QR code。<strong>5 分鐘內有效，只能用一次</strong>（剩 <span id="invite-left">5:00</span>）。連結本身不含永久同步碼。</p><div id="invite-qr" class="invite-qr"></div><p class="hb-note">或請對方在「家人給了邀請碼？」欄位輸入這組邀請碼：</p><p id="invite-code" class="invite-code" aria-live="polite"></p><label class="sr-only" for="invite-link">邀請連結</label><input id="invite-link" readonly><div class="actions"><button type="button" class="button" id="invite-copy">複製連結</button><button type="button" class="button quiet" id="invite-cancel">取消邀請</button></div></div>
+<div id="invite-box" class="invite-box" hidden><p class="hb-note">把下面的連結傳給家人，或請對方用手機掃 QR code。<strong>5 分鐘內有效，只能用一次</strong>（剩 <span id="invite-left">5:00</span>）。連結本身不含永久同步碼。</p><div id="invite-qr" class="invite-qr"></div><p class="hb-note">或請對方在「家人給了邀請碼？」欄位輸入這組邀請碼：</p><p id="invite-code" class="invite-code" aria-live="polite"></p><label class="sr-only" for="invite-link">邀請連結</label><input id="invite-link" readonly><div class="actions"><a class="button primary" id="invite-line" href="#" target="_blank" rel="noopener">傳到 LINE</a><button type="button" class="button" id="invite-share" hidden>分享…</button><button type="button" class="button" id="invite-copy">複製連結</button><button type="button" class="button quiet" id="invite-cancel">取消邀請</button></div></div>
 <details class="sync-restore" id="sync-backup-box"><summary>備援與備份</summary><p class="hb-note">所有裝置的瀏覽器資料都被清掉時，備援碼是找回雲端紀錄的唯一方式。它等於這份紀錄的鑰匙，知道的人都能讀寫，請只留給自己。</p><div class="actions"><button type="button" class="button" id="sync-show">顯示備援碼</button><button type="button" class="button" id="sync-copy" hidden>複製備援碼</button><a class="button" id="sync-mail" hidden href="#">用信箱寄給自己</a><button type="button" class="button" id="sync-backup">下載 JSON 備份</button></div><p id="sync-code-view" class="sync-code" hidden></p></details></div>
 <p id="sync-msg" class="hb-note" role="status" aria-live="polite"></p>
 <details class="reading-help"><summary>同步怎麼運作？隱私與風險</summary><ul>
@@ -2601,6 +2601,9 @@
       const link = `${location.origin === 'null' ? 'file://' : location.origin}${location.pathname}#join=${parsed.token}`;
       invite = {id: pair.id, expires: Date.now() + INVITE_MS};
       $('invite-link').value = link; $('invite-code').textContent = parsed.token; $('invite-box').hidden = false; msg('');
+      shareText = inviteText(parsed.token, link);
+      $('invite-line').href = `https://line.me/R/share?text=${encodeURIComponent(shareText)}`;
+      $('invite-share').hidden = typeof navigator.share !== 'function';
       const tick = () => {
         const left = invite ? invite.expires - Date.now() : 0;
         if (left <= 0) { closeInvite(false); msg('邀請已過期，需要的話請重新產生。'); return; }
@@ -2612,6 +2615,13 @@
     finally { btn.disabled = false; }
   });
   $('invite-cancel').addEventListener('click', () => { closeInvite(true); msg('已取消邀請。'); });
+  // The message carries the one-time token (as a code and inside the link), never the permanent code.
+  let shareText = '';
+  const inviteText = (token, link) => `「一起長大」兒童紀錄表同步邀請\n邀請碼：${token}\n5 分鐘內有效，只能用一次。\n點連結加入，或在兒童紀錄表的「家人給了邀請碼？」欄位輸入邀請碼：\n${link}`;
+  $('invite-share').addEventListener('click', async () => {
+    try { await navigator.share({text: shareText}); }
+    catch (error) { if (error.name !== 'AbortError') msg('這個瀏覽器無法開啟分享，請改用「傳到 LINE」或「複製連結」。'); }
+  });
   $('invite-copy').addEventListener('click', async () => {
     const input = $('invite-link');
     try { await navigator.clipboard.writeText(input.value); msg('已複製邀請連結（5 分鐘內有效，只能用一次）。'); }
