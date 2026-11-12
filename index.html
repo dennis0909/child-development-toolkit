@@ -213,7 +213,7 @@
         </dl>
         <div class="single-source"><a class="source-link" href="https://medlineplus.gov/lab-tests/developmental-and-behavioral-screening-tests/" target="_blank" rel="noopener noreferrer">https://medlineplus.gov/lab-tests/developmental-and-behavioral-screening-tests/</a></div>
       </article></div></section>
-<section class="view" id="growth" data-title="兒童紀錄表"><div class="page-heading"><div><p class="eyebrow">CHILD RECORDS</p><h1>兒童紀錄表</h1><p class="section-lead">身高體重、視力眼軸、牙齒塗氟、疫苗接種都記在這裡；紀錄只存在你的瀏覽器，可加密同步到其他裝置。</p></div></div>
+<section class="view" id="growth" data-title="兒童紀錄表"><div class="page-heading"><div><p class="eyebrow">CHILD RECORDS</p><h1>兒童紀錄表</h1><p class="section-lead">身高體重、視力眼軸、牙齒塗氟、疫苗接種都記在這裡；紀錄只存在你的瀏覽器，可加密同步到其他裝置。</p></div></div><div id="kid-bar" class="kid-bar" aria-label="切換孩子"><div id="kid-chips" class="kid-chips"></div><button type="button" class="button quiet" id="kid-add">＋ 新增孩子</button><button type="button" class="reset-button" id="kid-remove" hidden>移除這個孩子</button><p id="kid-note" class="muted">有兩個以上的孩子？按「新增孩子」，每個孩子有各自的紀錄，用同一個同步碼同步。</p><p id="kid-msg" class="muted" role="status" aria-live="polite"></p></div>
 <section id="sync-box" class="panel sync-box sync-top" hidden aria-labelledby="sync-title"><details id="sync-fold" class="sync-fold"><summary><h3 id="sync-title">跨裝置同步（不需帳號）</h3><span id="sync-badge" class="sync-badge">尚未開啟 · 點此展開</span></summary>
 <p class="hb-note">在手機與電腦之間同步紀錄，也可以邀請家人一起看。資料在這台裝置上加密後才上傳，伺服器看不到內容，也不需要註冊。</p>
 <div id="sync-off"><div class="actions"><button type="button" class="button primary" id="sync-create">開啟同步</button></div><form id="sync-join-form" class="hb-form join-code-form" novalidate><label>家人給了邀請碼？在這裡輸入<input id="sync-join-input" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="24"></label><button type="submit" class="button">加入</button></form><p class="hb-note">已經有家人在同步？請對方在他的裝置按「邀請家人」，再開啟他給你的連結、掃 QR code，或在上方輸入邀請碼（5 分鐘內有效，只能用一次）。</p>
@@ -270,7 +270,7 @@
 <p id="io-msg" class="hb-note" role="status" aria-live="polite"></p>
 <details class="reading-help"><summary>進階：直接編輯原始資料（JSON）</summary><p>下面就是保存在瀏覽器的完整資料。修改後按「套用」會整份取代目前紀錄；格式有誤時不會套用。日期用 YYYY-MM-DD，d 日期、h 身高（cm）、w 體重（kg），沒量的欄位填 null。</p><textarea id="raw-json" rows="12" spellcheck="false" aria-label="原始成長資料 JSON"></textarea><div class="actions"><button type="button" class="button primary" id="raw-apply">套用修改</button><button type="button" class="button" id="raw-reset">放棄修改</button></div><p id="raw-msg" class="hb-note" role="status" aria-live="polite"></p></details>
 </section></div><div id="vision" class="vision-block records-tab"><div class="section-head vision-head"><div><p class="eyebrow">LOOK CLOSER</p><h2>視力與眼軸紀錄</h2><p>記下每次驗光與眼軸，看長期趨勢；這裡不做診斷，數字請由眼科醫師判讀。</p></div></div>
-<style>.eye-eyes{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px 10px;align-items:center;margin:16px 0}.eye-eyes span{font-size:12px;color:var(--muted)}.eye-eyes b{font-size:13px;text-align:center}.eye-eyes input{margin:0;min-width:0;padding-left:8px;padding-right:6px;font-size:15px}.se-pair{display:grid;gap:4px;min-width:0}.se-pair select{margin:0;min-width:0;min-height:36px;font-size:14px;padding:0 6px}.eye-sub{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px}.eye-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:11px;color:var(--muted);margin-top:6px}.eye-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:2px solid}.eye-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}.eye-table th,.eye-table td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}.eye-table td.eye-note{white-space:normal;color:var(--muted)}.table-scroll{overflow-x:auto}.vision-block .growth-layout>*,.vision-block .growth-output,.vision-block .panel{min-width:0}.records-jump{display:flex;flex-wrap:wrap;gap:8px}.records-jump .button{gap:6px}.records-tabs{position:sticky;top:0;z-index:5;background:var(--paper);padding:10px 0;margin:4px 0 6px;border-bottom:1px solid var(--line)}.records-tabs .button{flex:1 1 0;justify-content:center;min-width:0;padding-left:6px;padding-right:6px}.records-tabs .button.active{background:var(--teal);color:#fff;border-color:var(--teal)}@media(max-width:760px){.records-tabs{top:70px;gap:6px}.records-tabs .button{flex-direction:column;gap:2px;font-size:12px;min-height:54px;padding:6px 2px;white-space:nowrap}}.records-head{scroll-margin-top:90px;margin-top:8px}.dental-due{font-size:26px;font-weight:600;color:var(--teal);margin-top:8px}#dental-next.overdue .dental-due{color:#c8374d}.vax-list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:12px}.vax-item{border:1px solid var(--line);border-radius:12px;padding:12px 14px}.vax-item.overdue{border-color:#e6b7bf;background:#fdf4f5}.vax-date{font-size:20px;font-weight:600;color:var(--teal);margin:0}.vax-item.overdue .vax-date{color:#c8374d}.vax-name{font-weight:600;margin:2px 0}.vax-item .muted{margin:2px 0;font-size:13px}.vax-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.vax-actions .button{width:auto;flex:0 0 auto;min-height:40px}#dental-next .button{margin-top:16px;width:100%}#dental-next .button:disabled{opacity:.45}.vision-block{margin-top:48px;padding-top:32px;border-top:1px solid var(--line);scroll-margin-top:90px}.records-tab.vision-block{margin-top:8px;padding-top:8px;border-top:0}.vision-head h2{font-size:24px}</style>
+<style>.eye-eyes{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px 10px;align-items:center;margin:16px 0}.eye-eyes span{font-size:12px;color:var(--muted)}.eye-eyes b{font-size:13px;text-align:center}.eye-eyes input{margin:0;min-width:0;padding-left:8px;padding-right:6px;font-size:15px}.se-pair{display:grid;gap:4px;min-width:0}.se-pair select{margin:0;min-width:0;min-height:36px;font-size:14px;padding:0 6px}.eye-sub{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px}.eye-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:11px;color:var(--muted);margin-top:6px}.eye-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:2px solid}.eye-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}.eye-table th,.eye-table td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}.eye-table td.eye-note{white-space:normal;color:var(--muted)}.table-scroll{overflow-x:auto}.vision-block .growth-layout>*,.vision-block .growth-output,.vision-block .panel{min-width:0}.kid-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 4px}.kid-chips{display:flex;flex-wrap:wrap;gap:8px}.kid-chip{font:inherit;font-weight:600;min-height:40px;padding:6px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}.kid-chip.active{background:var(--teal);border-color:var(--teal);color:#fff}.kid-bar .button{width:auto;min-height:40px}.kid-bar p{flex-basis:100%;margin:0;font-size:12px}.kid-bar p:empty{display:none}.records-jump{display:flex;flex-wrap:wrap;gap:8px}.records-jump .button{gap:6px}.records-tabs{position:sticky;top:0;z-index:5;background:var(--paper);padding:10px 0;margin:4px 0 6px;border-bottom:1px solid var(--line)}.records-tabs .button{flex:1 1 0;justify-content:center;min-width:0;padding-left:6px;padding-right:6px}.records-tabs .button.active{background:var(--teal);color:#fff;border-color:var(--teal)}@media(max-width:760px){.records-tabs{top:70px;gap:6px}.records-tabs .button{flex-direction:column;gap:2px;font-size:12px;min-height:54px;padding:6px 2px;white-space:nowrap}}.records-head{scroll-margin-top:90px;margin-top:8px}.dental-due{font-size:26px;font-weight:600;color:var(--teal);margin-top:8px}#dental-next.overdue .dental-due{color:#c8374d}.vax-list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:12px}.vax-item{border:1px solid var(--line);border-radius:12px;padding:12px 14px}.vax-item.overdue{border-color:#e6b7bf;background:#fdf4f5}.vax-date{font-size:20px;font-weight:600;color:var(--teal);margin:0}.vax-item.overdue .vax-date{color:#c8374d}.vax-name{font-weight:600;margin:2px 0}.vax-item .muted{margin:2px 0;font-size:13px}.vax-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.vax-actions .button{width:auto;flex:0 0 auto;min-height:40px}#dental-next .button{margin-top:16px;width:100%}#dental-next .button:disabled{opacity:.45}.vision-block{margin-top:48px;padding-top:32px;border-top:1px solid var(--line);scroll-margin-top:90px}.records-tab.vision-block{margin-top:8px;padding-top:8px;border-top:0}.vision-head h2{font-size:24px}</style>
 <div class="growth-layout"><section class="panel measurement-panel" aria-labelledby="eye-form-title"><h2 id="eye-form-title">這次的檢查</h2><p class="panel-intro">照驗光單填寫；沒有的欄位留白。度數先選遠視或近視，再填幾度，例如 75。驗光單上的 +0.75 D 是遠視 75 度、−1.50 D 是近視 150 度；有散光時填等效球面度 SE（球面度＋散光度÷2），例如 +1.00 合併 −0.50 散光，SE 是遠視 75 度。</p>
 <form id="eye-form" autocomplete="off" novalidate><div class="form-grid"><label>檢查日期<input name="d" type="date" required></label><label>診所（選填）<input name="c" maxlength="20" placeholder="例如：A 診所"></label></div>
 <label class="filter-label">是否散瞳<select name="cy"><option value="0">未散瞳</option><option value="1">散瞳驗光</option></select></label>
@@ -1847,9 +1847,11 @@
       applying = true;
       try {
         setRecords(s.records || []);
-        if (s.sex === 'boys' || s.sex === 'girls') form.elements.sex.value = s.sex;
+        // Switching children applies a whole profile, so a missing birth date or sex clears the previous child's.
+        form.elements.sex.value = s.sex === 'girls' ? 'girls' : 'boys';
         setNick(s.nick);
-        if (s.birth && validDate(s.birth)) { form.elements.birth.value = s.birth; form.elements.birth.dispatchEvent(new Event('change', {bubbles: true})); }
+        const birth = s.birth && validDate(s.birth) ? s.birth : '';
+        if (form.elements.birth.value !== birth) { form.elements.birth.value = birth; form.elements.birth.dispatchEvent(new Event('change', {bubbles: true})); }
         mu = s.mu || 0;
         refreshProfile();
         persist(); renderAll();
@@ -2243,8 +2245,8 @@
     ];
     return lines.map(fold).join('\r\n') + '\r\n';
   }
-  const ics = (due, {last, uid, now}) => event(due, {uid, now, remind: reminderAt(due, now),
-    summary: '兒童牙齒塗氟（半年回診）', description: `上次塗氟：${last}。記得預約牙醫。`, alarm: '兒童牙齒塗氟，記得預約'});
+  const ics = (due, {last, uid, now, who}) => event(due, {uid, now, remind: reminderAt(due, now),
+    summary: `${who ? who + ' ' : ''}兒童牙齒塗氟（半年回診）`, description: `上次塗氟：${last}。記得預約牙醫。`, alarm: '兒童牙齒塗氟，記得預約'});
   function nextDay(iso) {
     const t = new Date(Date.UTC(...iso.split('-').map((v, k) => (k === 1 ? Number(v) - 1 : Number(v)))) + 864e5);
     return t.toISOString().slice(0, 10);
@@ -2338,7 +2340,9 @@
       location.href = D.icsUrl(ENDPOINT, due.due, opts);
       return;
     }
-    download(D.ics(due.due, opts), `fluoride-${due.due}.ics`);
+    // The child's nickname helps tell siblings apart; it stays in the downloaded file and never reaches the server.
+    const who = (document.querySelector('#growth-form [name=nickname]') || {}).value || '';
+    download(D.ics(due.due, {...opts, who: who.trim()}), `fluoride-${due.due}.ics`);
   });
 
   form.addEventListener('submit', e => {
@@ -2396,8 +2400,8 @@
     return early.getTime() > now ? early : new Date(y, m - 1, d, 9, 0, 0);
   }
   // The vaccine name stays out of the server-built event; only the downloaded file carries it.
-  const ics = (due, {uid, now, name}) => Dental.event(due, {uid, now, remind: reminderAt(due, now),
-    summary: name ? `兒童疫苗接種：${name}` : '兒童疫苗接種',
+  const ics = (due, {uid, now, name, who}) => Dental.event(due, {uid, now, remind: reminderAt(due, now),
+    summary: `${who ? who + ' ' : ''}兒童疫苗接種${name ? '：' + name : ''}`,
     description: `預約接種日：${due}。記得帶兒童健康手冊。`, alarm: '兒童疫苗接種，記得帶兒童健康手冊'});
   function icsUrl(endpoint, due, {uid, now}) {
     const q = new URLSearchParams({kind: 'vaccine', due, remind: Dental.utcStamp(reminderAt(due, now)), uid});
@@ -2444,7 +2448,7 @@
       location.href = V.icsUrl(ENDPOINT, r.d, opts);
       return;
     }
-    const url = URL.createObjectURL(new Blob([V.ics(r.d, {...opts, name: r.v})], {type: 'text/calendar;charset=utf-8'}));
+    const url = URL.createObjectURL(new Blob([V.ics(r.d, {...opts, name: r.v, who: ((document.querySelector('#growth-form [name=nickname]') || {}).value || '').trim()})], {type: 'text/calendar;charset=utf-8'}));
     const a = el('a'); a.href = url; a.download = `vaccine-${r.d}.ics`;
     document.body.append(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 60000);
@@ -2509,6 +2513,122 @@
   };
   form.elements.d.value = today();
   load(); renderAll();
+})();
+
+(() => {
+  // Several children share one page: the record stores always hold the active child, and this module
+  // parks the others in KEY. The first child is the blob's top level (what older pages read); the rest are `kids`.
+  const Growth = window.GrowthStore, E = window.EyeCore, bar = document.getElementById('kid-bar');
+  if (!Growth || !E || !bar) return;
+  const KEY = 'education-family-v1';
+  const $ = id => document.getElementById(id);
+  const extra = [['eye', window.EyeStore], ['dental', window.DentalStore], ['vax', window.VaccineStore]].filter(([, s]) => s);
+  const Stores = {
+    snapshot: () => Object.assign(Growth.snapshot(), ...extra.map(([k, s]) => ({[k]: s.snapshot()}))),
+    apply: s => { Growth.apply(s); extra.forEach(([k, st]) => st.apply(s[k] || [])); },
+  };
+  const listeners = [];
+  // active: null means the first child. first: the first child's data while another child is shown.
+  let state = {active: null, first: null, kids: []};
+
+  function load() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved && Array.isArray(saved.kids)) state = {active: saved.active || null, first: saved.first || null, kids: saved.kids};
+    } catch (error) { /* no family yet */ }
+    if (state.active && !state.kids.some(k => k.id === state.active && !k.x)) state.active = null;
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (error) { /* stays in memory for this visit */ }
+  }
+  const strip = s => { const {kids, id, o, ...rest} = s; return rest; };
+  const blank = () => ({version: 2, nick: '', sex: 'boys', birth: null, mu: Date.now(), records: [], eye: [], dental: [], vax: []});
+  const name = (s, n) => (s && s.nick) || `孩子 ${n}`;
+
+  function snapshot() {
+    const cur = Stores.snapshot();
+    const first = state.active === null ? cur : (state.first || blank());
+    const kids = state.kids.map(k => (k.id === state.active ? {...strip(cur), id: k.id, o: k.o} : k));
+    return kids.length ? {...strip(first), kids} : strip(first);
+  }
+  function show(s) {
+    Stores.apply(s);
+    // The home page's age guide follows the child on screen.
+    if (s.birth && window.ChildAge) window.ChildAge.write(s.birth.slice(0, 7));
+    const f = $('growth-form');
+    if (f) { f.elements.height.value = ''; f.elements.weight.value = ''; f.dispatchEvent(new Event('input', {bubbles: true})); }
+  }
+  // Parks the child on screen, then shows another one (null = the first child).
+  function switchTo(id) {
+    if (id === state.active) return;
+    const cur = Stores.snapshot();
+    if (state.active === null) state.first = strip(cur);
+    else state.kids = state.kids.map(k => (k.id === state.active ? {...strip(cur), id: k.id, o: k.o} : k));
+    state.active = id;
+    const next = id === null ? state.first : state.kids.find(k => k.id === id);
+    if (id === null) state.first = null;
+    save();
+    show(next || blank());
+    render();
+  }
+
+  function render() {
+    const chips = $('kid-chips');
+    chips.replaceChildren();
+    const live = state.kids.filter(k => !k.x);
+    const firstData = state.active === null ? Stores.snapshot() : state.first;
+    const all = [[null, firstData]].concat(live.map(k => [k.id, k.id === state.active ? Stores.snapshot() : k]));
+    all.forEach(([id, data], n) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'kid-chip' + (id === state.active ? ' active' : '');
+      b.textContent = name(data, n + 1);
+      b.setAttribute('aria-pressed', String(id === state.active));
+      b.addEventListener('click', () => switchTo(id));
+      chips.append(b);
+    });
+    $('kid-remove').hidden = state.active === null;
+    $('kid-note').hidden = all.length > 1;
+  }
+
+  $('kid-add').addEventListener('click', () => {
+    const kid = {...blank(), id: E.newId(), o: Date.now()};
+    state.kids.push(kid);
+    save();
+    switchTo(kid.id);
+    listeners.forEach(fn => fn());
+    const details = document.querySelector('#growth-form .profile-details');
+    if (details) details.open = true;
+    location.hash = '#height-weight';
+    setTimeout(() => { const nick = document.querySelector('#growth-form [name=nickname]'); if (nick) nick.focus(); }, 50);
+    $('kid-msg').textContent = '已新增，請在「基本資料」填暱稱、生日與性別。';
+  });
+  $('kid-remove').addEventListener('click', () => {
+    const id = state.active;
+    if (!id || !confirm(`移除「${name(Stores.snapshot(), '')}」和這個孩子的所有紀錄？同步的家人裝置也會一起移除，無法復原。`)) return;
+    switchTo(null);
+    state.kids = state.kids.map(k => (k.id === id ? {id, x: true, u: Date.now()} : k));
+    save(); render();
+    listeners.forEach(fn => fn());
+    $('kid-msg').textContent = '已移除。';
+  });
+  // Any save, including a nickname edit, may rename the chip.
+  [Growth, ...extra.map(([, s]) => s)].forEach(s => s.onChange(() => render()));
+
+  // Used by the optional sync module in place of the single-child stores.
+  window.FamilyStore = {
+    snapshot,
+    onChange: fn => { listeners.push(fn); Growth.onChange(fn); extra.forEach(([, st]) => st.onChange(fn)); },
+    apply(s) {
+      const kids = Array.isArray(s.kids) ? s.kids : [];
+      state.kids = kids;
+      const gone = state.active !== null && !kids.some(k => k.id === state.active && !k.x);
+      if (gone) state.active = null;
+      if (state.active === null) { state.first = null; Stores.apply(strip(s)); }
+      else { state.first = strip(s); Stores.apply(strip(kids.find(k => k.id === state.active))); }
+      save(); render();
+    },
+  };
+  load(); render();
 })();
 
 /*SYNC-START*/
@@ -2592,7 +2712,8 @@
   const Dental = typeof module === 'object' && module.exports ? require('./dental_core.js') : root.DentalCore;
   const Vaccine = typeof module === 'object' && module.exports ? require('./vaccine_core.js') : root.VaccineCore;
   const sortedRecords = list => list.slice().sort((a, b) => a.d.localeCompare(b.d));
-  function canonical(snapshot) {
+  // One child's data: profile, growth records, and the eye, dental and vaccine lists.
+  function canonicalOne(snapshot) {
     return JSON.stringify({
       sex: snapshot.sex || null, birth: snapshot.birth || null, nick: snapshot.nick || '', mu: snapshot.mu || 0,
       records: sortedRecords(snapshot.records || []).map(r => [r.d, r.h === undefined ? null : r.h, r.w === undefined ? null : r.w, stamp(r), r.x ? 1 : 0]),
@@ -2601,9 +2722,17 @@
       vax: Vaccine ? Vaccine.canonical(snapshot.vax) : JSON.stringify(snapshot.vax || []),
     });
   }
+  // The blob's top level is the first child, which is all an older page knows about; other children ride in `kids`.
+  const KID_ID = /^[0-9a-f]{16}$/;
+  const kidList = s => (Array.isArray(s.kids) ? s.kids.filter(k => k && KID_ID.test(k.id)) : []);
+  function canonical(snapshot) {
+    const kids = kidList(snapshot).slice().sort((a, b) => a.id.localeCompare(b.id))
+      .map(k => (k.x ? [k.id, 'x', k.u || 0] : [k.id, k.o || 0, canonicalOne(k)]));
+    return canonicalOne(snapshot) + (kids.length ? JSON.stringify(kids) : '');
+  }
   const equal = (a, b) => canonical(a) === canonical(b);
   // Union by date; the newer edit wins and a newer tombstone (x) removes the record. Ties resolve by canonical text so both sides converge.
-  function merge(a, b) {
+  function mergeOne(a, b) {
     const byDate = new Map();
     for (const r of (a.records || []).concat(b.records || [])) {
       const current = byDate.get(r.d);
@@ -2615,22 +2744,29 @@
     const vax = Vaccine ? Vaccine.merge(a.vax, b.vax) : (a.vax || b.vax || []);
     return {version: 2, nick: typeof meta.nick === 'string' ? meta.nick : (a.nick || b.nick || ''), sex: meta.sex || a.sex || b.sex || null, birth: meta.birth || a.birth || b.birth || null, mu: Math.max(a.mu || 0, b.mu || 0), records: sortedRecords([...byDate.values()]), eye, dental, vax};
   }
+  // Children are matched by id. Removing a child is final, so a tombstone beats any edit.
+  function merge(a, b) {
+    const out = mergeOne(a, b), byId = new Map();
+    for (const k of kidList(a).concat(kidList(b))) {
+      const cur = byId.get(k.id);
+      if (!cur) byId.set(k.id, k.x ? {id: k.id, x: true, u: k.u || 0} : {id: k.id, o: k.o || 0, ...mergeOne(k, {})});
+      else if (cur.x || k.x) byId.set(k.id, {id: k.id, x: true, u: Math.max(cur.x ? cur.u : 0, k.x ? k.u || 0 : 0)});
+      else byId.set(k.id, {id: k.id, o: cur.o && k.o ? Math.min(cur.o, k.o) : cur.o || k.o || 0, ...mergeOne(cur, k)});
+    }
+    if (byId.size) out.kids = [...byId.values()].sort((p, q) => (p.o || 0) - (q.o || 0) || p.id.localeCompare(q.id));
+    return out;
+  }
 
-  const api = {generateCode, parseCode, deriveKeys, generatePairToken, parsePairToken, derivePair, encrypt, decrypt, merge, equal, canonical, CODE_CHARS};
+  const api = {generateCode, parseCode, deriveKeys, generatePairToken, parsePairToken, derivePair, encrypt, decrypt, merge, mergeOne, equal, canonical, KID_ID, CODE_CHARS};
   if (typeof module === 'object' && module.exports) module.exports = api; else root.GrowthSyncCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);
 
 (() => {
   const ENDPOINT = 'https://growth-sync.dennischan0909.workers.dev', QR_SRC = 'qr.js?v=2bb4e92066';
   const $ = id => document.getElementById(id), box = $('sync-box');
-  const Core = window.GrowthSyncCore, Growth = window.GrowthStore;
-  // One blob carries every record store; the eye, dental and vaccine lists are optional.
-  const extra = [['eye', window.EyeStore], ['dental', window.DentalStore], ['vax', window.VaccineStore]].filter(([, s]) => s);
-  const Store = Growth && {
-    snapshot: () => Object.assign(Growth.snapshot(), ...extra.map(([k, s]) => ({[k]: s.snapshot()}))),
-    apply: s => { Growth.apply(s); extra.forEach(([k, st]) => st.apply(s[k] || [])); },
-    onChange: fn => { Growth.onChange(fn); extra.forEach(([, st]) => st.onChange(fn)); },
-  };
+  const Core = window.GrowthSyncCore;
+  // family.js combines every child's record stores into the one blob this module syncs.
+  const Store = window.FamilyStore;
   if (!box || !ENDPOINT || !Core || !Store) return;
   box.hidden = false;
   $('sync-fold').addEventListener('toggle', () => { $('sync-badge').textContent = $('sync-badge').textContent.replace(/點此(展開|收合)/, '點此' + ($('sync-fold').open ? '收合' : '展開')); });
