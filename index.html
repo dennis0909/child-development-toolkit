@@ -213,7 +213,7 @@
         </dl>
         <div class="single-source"><a class="source-link" href="https://medlineplus.gov/lab-tests/developmental-and-behavioral-screening-tests/" target="_blank" rel="noopener noreferrer">https://medlineplus.gov/lab-tests/developmental-and-behavioral-screening-tests/</a></div>
       </article></div></section>
-<section class="view" id="growth" data-title="兒童紀錄表"><div class="page-heading"><div><p class="eyebrow">CHILD RECORDS</p><h1>兒童紀錄表</h1><p class="section-lead">身高體重、視力眼軸、牙齒塗氟都記在這裡；紀錄只存在你的瀏覽器，可加密同步到其他裝置。</p></div></div>
+<section class="view" id="growth" data-title="兒童紀錄表"><div class="page-heading"><div><p class="eyebrow">CHILD RECORDS</p><h1>兒童紀錄表</h1><p class="section-lead">身高體重、視力眼軸、牙齒塗氟、疫苗接種都記在這裡；紀錄只存在你的瀏覽器，可加密同步到其他裝置。</p></div></div>
 <section id="sync-box" class="panel sync-box sync-top" hidden aria-labelledby="sync-title"><details id="sync-fold" class="sync-fold"><summary><h3 id="sync-title">跨裝置同步（不需帳號）</h3><span id="sync-badge" class="sync-badge">尚未開啟 · 點此展開</span></summary>
 <p class="hb-note">在手機與電腦之間同步紀錄，也可以邀請家人一起看。資料在這台裝置上加密後才上傳，伺服器看不到內容，也不需要註冊。</p>
 <div id="sync-off"><div class="actions"><button type="button" class="button primary" id="sync-create">開啟同步</button></div><form id="sync-join-form" class="hb-form join-code-form" novalidate><label>家人給了邀請碼？在這裡輸入<input id="sync-join-input" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="24"></label><button type="submit" class="button">加入</button></form><p class="hb-note">已經有家人在同步？請對方在他的裝置按「邀請家人」，再開啟他給你的連結、掃 QR code，或在上方輸入邀請碼（5 分鐘內有效，只能用一次）。</p>
@@ -223,14 +223,14 @@
 <details class="sync-restore" id="sync-backup-box"><summary>備援與備份</summary><p class="hb-note">所有裝置的瀏覽器資料都被清掉時，備援碼是找回雲端紀錄的唯一方式。它等於這份紀錄的鑰匙，知道的人都能讀寫，請只留給自己。</p><div class="actions"><button type="button" class="button" id="sync-show">顯示備援碼</button><button type="button" class="button" id="sync-copy" hidden>複製備援碼</button><a class="button" id="sync-mail" hidden href="#">用信箱寄給自己</a><button type="button" class="button" id="sync-backup">下載 JSON 備份</button></div><p id="sync-code-view" class="sync-code" hidden></p></details></div>
 <details class="reading-help"><summary>同步怎麼運作？隱私與風險</summary><ul>
 <li>同步碼（備援碼）是在這台裝置隨機產生的 128 位元金鑰，不會傳給伺服器；伺服器只拿到由它推導出的編號，和加密後的資料。邀請家人時，碼只以加密形式暫存在伺服器 5 分鐘，領取一次就刪除。</li>
-<li>加密的內容包含暱稱、性別、出生日期、每次量測的日期、身高、體重，以及視力眼軸與塗氟紀錄。伺服器看不到明文，也沒有你的帳號；暱稱請用小名，不要用真名。</li>
+<li>加密的內容包含暱稱、性別、出生日期、每次量測的日期、身高、體重，以及視力眼軸、塗氟與疫苗紀錄。伺服器看不到明文，也沒有你的帳號；暱稱請用小名，不要用真名。</li>
 <li>伺服器仍然看得到：連線的 IP 位址（雲端平台一般都會）、資料大小與更新時間。</li>
 <li>被邀請的家人擁有完整的讀寫權限，而且沒辦法只撤銷其中一個人；要退出只能「停用並刪除雲端資料」，所有人一起斷線。備援碼弄丟、所有裝置又清掉資料時，雲端的紀錄就無法找回，所以建議下載 JSON 備份。</li>
 <li>兩台裝置同時修改時，同一天的紀錄以較晚修改的為準；刪除也會同步。</li>
 <li>超過 400 天沒有同步的雲端資料會自動刪除；也可以按「停用並刪除雲端資料」立即刪除。</li>
 <li>建議不要使用孩子的真實姓名；這個工具本來就不需要。</li></ul></details></details>
 <div id="join-box" class="join-box" hidden role="alertdialog" aria-labelledby="join-title"><h4 id="join-title">收到同步邀請</h4><p id="join-note" class="hb-note"></p><div class="actions"><button type="button" class="button primary" id="join-yes">加入並合併</button><button type="button" class="button quiet" id="join-no">不要</button></div></div>
-<p id="sync-msg" class="hb-note" role="status" aria-live="polite"></p></section><nav class="records-jump records-tabs" aria-label="紀錄表分頁"><a class="button quiet" href="#height-weight"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-4 4 2 4-7"/><path d="M17 6h3v3"/></svg><span>身高體重</span></a><a class="button quiet" href="#vision"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="15" r="3.5"/><circle cx="18" cy="15" r="3.5"/><path d="M9.5 15h5M2.5 14l2-7h2M21.5 14l-2-7h-2"/></svg><span>視力眼軸</span></a><a class="button quiet" href="#dental"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 7.5.4 2.6 1 6 2.5 6s1.8-4 2.5-6c.3-.9 1.7-.9 2 0 .7 2 1 6 2.5 6s2.1-3.4 2.5-6c.5-3 2-4.5 2-7.5C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></svg><span>牙齒塗氟</span></a></nav><div id="height-weight" class="records-tab"><div class="section-head records-head"><div><p class="eyebrow">GROWTH CHECK</p><h2>身高與體重，從 0 歲到 80 歲</h2><p>0–19 歲查看 WHO 百分位；19 歲以上查看 BMI 分級。</p></div></div>
+<p id="sync-msg" class="hb-note" role="status" aria-live="polite"></p></section><nav class="records-jump records-tabs" aria-label="紀錄表分頁"><a class="button quiet" href="#height-weight"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4m0 16h16M8 15l4-4 4 2 4-7"/><path d="M17 6h3v3"/></svg><span>身高體重</span></a><a class="button quiet" href="#vision"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="15" r="3.5"/><circle cx="18" cy="15" r="3.5"/><path d="M9.5 15h5M2.5 14l2-7h2M21.5 14l-2-7h-2"/></svg><span>視力眼軸</span></a><a class="button quiet" href="#dental"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 7.5.4 2.6 1 6 2.5 6s1.8-4 2.5-6c.3-.9 1.7-.9 2 0 .7 2 1 6 2.5 6s2.1-3.4 2.5-6c.5-3 2-4.5 2-7.5C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></svg><span>牙齒塗氟</span></a><a class="button quiet" href="#vaccine"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg><span>疫苗接種</span></a></nav><div id="height-weight" class="records-tab"><div class="section-head records-head"><div><p class="eyebrow">GROWTH CHECK</p><h2>身高與體重，從 0 歲到 80 歲</h2><p>0–19 歲查看 WHO 百分位；19 歲以上查看 BMI 分級。</p></div></div>
 <div class="growth-layout"><section class="panel measurement-panel" aria-labelledby="form-title"><h2 id="form-title">這次的量測</h2><p class="panel-intro">0–2 歲請量躺姿身長，2 歲起量站立身高。</p>
 <form id="growth-form" autocomplete="off" novalidate><div class="form-grid measurement-inputs"><label>身高（cm）<div class="unit-input"><input name="height" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="105" required autocomplete="off"><span aria-hidden="true">cm</span></div></label><label>體重（kg）<div class="unit-input"><input name="weight" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="17" required autocomplete="off"><span aria-hidden="true">kg</span></div></label></div>
 <label class="filter-label">量測日期<input name="measured" type="date" required autocomplete="off"></label>
@@ -270,7 +270,7 @@
 <p id="io-msg" class="hb-note" role="status" aria-live="polite"></p>
 <details class="reading-help"><summary>進階：直接編輯原始資料（JSON）</summary><p>下面就是保存在瀏覽器的完整資料。修改後按「套用」會整份取代目前紀錄；格式有誤時不會套用。日期用 YYYY-MM-DD，d 日期、h 身高（cm）、w 體重（kg），沒量的欄位填 null。</p><textarea id="raw-json" rows="12" spellcheck="false" aria-label="原始成長資料 JSON"></textarea><div class="actions"><button type="button" class="button primary" id="raw-apply">套用修改</button><button type="button" class="button" id="raw-reset">放棄修改</button></div><p id="raw-msg" class="hb-note" role="status" aria-live="polite"></p></details>
 </section></div><div id="vision" class="vision-block records-tab"><div class="section-head vision-head"><div><p class="eyebrow">LOOK CLOSER</p><h2>視力與眼軸紀錄</h2><p>記下每次驗光與眼軸，看長期趨勢；這裡不做診斷，數字請由眼科醫師判讀。</p></div></div>
-<style>.eye-eyes{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px 10px;align-items:center;margin:16px 0}.eye-eyes span{font-size:12px;color:var(--muted)}.eye-eyes b{font-size:13px;text-align:center}.eye-eyes input{margin:0;min-width:0;padding-left:8px;padding-right:6px;font-size:15px}.se-pair{display:grid;gap:4px;min-width:0}.se-pair select{margin:0;min-width:0;min-height:36px;font-size:14px;padding:0 6px}.eye-sub{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px}.eye-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:11px;color:var(--muted);margin-top:6px}.eye-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:2px solid}.eye-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}.eye-table th,.eye-table td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}.eye-table td.eye-note{white-space:normal;color:var(--muted)}.table-scroll{overflow-x:auto}.vision-block .growth-layout>*,.vision-block .growth-output,.vision-block .panel{min-width:0}.records-jump{display:flex;flex-wrap:wrap;gap:8px}.records-jump .button{gap:6px}.records-tabs{position:sticky;top:0;z-index:5;background:var(--paper);padding:10px 0;margin:4px 0 6px;border-bottom:1px solid var(--line)}.records-tabs .button{flex:1 1 0;justify-content:center;min-width:0;padding-left:6px;padding-right:6px}.records-tabs .button.active{background:var(--teal);color:#fff;border-color:var(--teal)}@media(max-width:760px){.records-tabs{top:70px}}.records-head{scroll-margin-top:90px;margin-top:8px}.dental-due{font-size:26px;font-weight:600;color:var(--teal);margin-top:8px}#dental-next.overdue .dental-due{color:#c8374d}#dental-next .button{margin-top:16px;width:100%}#dental-next .button:disabled{opacity:.45}.vision-block{margin-top:48px;padding-top:32px;border-top:1px solid var(--line);scroll-margin-top:90px}.records-tab.vision-block{margin-top:8px;padding-top:8px;border-top:0}.vision-head h2{font-size:24px}</style>
+<style>.eye-eyes{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px 10px;align-items:center;margin:16px 0}.eye-eyes span{font-size:12px;color:var(--muted)}.eye-eyes b{font-size:13px;text-align:center}.eye-eyes input{margin:0;min-width:0;padding-left:8px;padding-right:6px;font-size:15px}.se-pair{display:grid;gap:4px;min-width:0}.se-pair select{margin:0;min-width:0;min-height:36px;font-size:14px;padding:0 6px}.eye-sub{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px}.eye-legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:11px;color:var(--muted);margin-top:6px}.eye-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:2px solid}.eye-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}.eye-table th,.eye-table td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}.eye-table td.eye-note{white-space:normal;color:var(--muted)}.table-scroll{overflow-x:auto}.vision-block .growth-layout>*,.vision-block .growth-output,.vision-block .panel{min-width:0}.records-jump{display:flex;flex-wrap:wrap;gap:8px}.records-jump .button{gap:6px}.records-tabs{position:sticky;top:0;z-index:5;background:var(--paper);padding:10px 0;margin:4px 0 6px;border-bottom:1px solid var(--line)}.records-tabs .button{flex:1 1 0;justify-content:center;min-width:0;padding-left:6px;padding-right:6px}.records-tabs .button.active{background:var(--teal);color:#fff;border-color:var(--teal)}@media(max-width:760px){.records-tabs{top:70px;gap:6px}.records-tabs .button{flex-direction:column;gap:2px;font-size:12px;min-height:54px;padding:6px 2px;white-space:nowrap}}.records-head{scroll-margin-top:90px;margin-top:8px}.dental-due{font-size:26px;font-weight:600;color:var(--teal);margin-top:8px}#dental-next.overdue .dental-due{color:#c8374d}.vax-list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:12px}.vax-item{border:1px solid var(--line);border-radius:12px;padding:12px 14px}.vax-item.overdue{border-color:#e6b7bf;background:#fdf4f5}.vax-date{font-size:20px;font-weight:600;color:var(--teal);margin:0}.vax-item.overdue .vax-date{color:#c8374d}.vax-name{font-weight:600;margin:2px 0}.vax-item .muted{margin:2px 0;font-size:13px}.vax-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.vax-actions .button{width:auto;flex:0 0 auto;min-height:40px}#dental-next .button{margin-top:16px;width:100%}#dental-next .button:disabled{opacity:.45}.vision-block{margin-top:48px;padding-top:32px;border-top:1px solid var(--line);scroll-margin-top:90px}.records-tab.vision-block{margin-top:8px;padding-top:8px;border-top:0}.vision-head h2{font-size:24px}</style>
 <div class="growth-layout"><section class="panel measurement-panel" aria-labelledby="eye-form-title"><h2 id="eye-form-title">這次的檢查</h2><p class="panel-intro">照驗光單填寫；沒有的欄位留白。度數先選遠視或近視，再填幾度，例如 75。驗光單上的 +0.75 D 是遠視 75 度、−1.50 D 是近視 150 度；有散光時填等效球面度 SE（球面度＋散光度÷2），例如 +1.00 合併 −0.50 散光，SE 是遠視 75 度。</p>
 <form id="eye-form" autocomplete="off" novalidate><div class="form-grid"><label>檢查日期<input name="d" type="date" required></label><label>診所（選填）<input name="c" maxlength="20" placeholder="例如：A 診所"></label></div>
 <label class="filter-label">是否散瞳<select name="cy"><option value="0">未散瞳</option><option value="1">散瞳驗光</option></select></label>
@@ -291,7 +291,7 @@
 <p><b>同齡遠視參考（國健署）。</b>下表是衛福部國民健康署建議各年齡應有的遠視度數（遠視儲備量），以散瞳驗光為準，所以本頁只拿散瞳結果和它比較；圖上的淡綠色區帶就是這個範圍。眼軸沒有官方的同齡參考值，這裡不提供。</p>
 <table class="eye-table"><thead><tr><th>年齡</th><th>應有的遠視度數</th></tr></thead><tbody><tr><td>0–3 歲</td><td>+1.50 ～ +2.00 D（150–200 度）</td></tr><tr><td>4–6 歲</td><td>+1.00 ～ +2.00 D（100–200 度）</td></tr><tr><td>7–8 歲</td><td>約 +1.00 D（100 度）</td></tr><tr><td>9–12 歲</td><td>至少 +0.50 D（50 度以上）</td></tr></tbody></table>
 <ul><li><a href="https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=864&amp;pid=16408" target="_blank" rel="noopener noreferrer">國健署：守護孩子的遠宇宙 遠視儲備量夠不夠?（海報）</a></li><li><a href="https://www.mohw.gov.tw/cp-5275-72872-1.html" target="_blank" rel="noopener noreferrer">衛福部新聞稿：儲備遠視量 破解近視迷思（2022-12-20）</a></li></ul>
-<p>參考範圍不是診斷標準；低於範圍代表值得追蹤，請帶著驗光單與這份紀錄詢問兒童眼科醫師。</p></details></div></div></div><div id="dental" class="vision-block records-tab"><div class="section-head vision-head"><div><p class="eyebrow">BRIGHT SMILES</p><h2>牙齒塗氟紀錄</h2><p>記下每次塗氟；下次建議日期以上次加 6 個月計算，實際間隔請依牙醫建議。</p></div></div><div class="growth-layout"><section class="panel measurement-panel" aria-labelledby="dental-form-title"><h2 id="dental-form-title">這次塗氟</h2><form id="dental-form" autocomplete="off" novalidate><div class="form-grid"><label>塗氟日期<input name="d" type="date" required></label><label>診所（選填）<input name="c" maxlength="20" placeholder="例如：社區牙醫"></label></div><label class="filter-label">備註（選填）<input name="n" maxlength="80" placeholder="例如：順便檢查蛀牙"></label><div class="actions"><button type="submit" class="button primary">存入紀錄</button></div><p id="dental-msg" class="privacy-note" role="status" aria-live="polite"></p><p class="privacy-note">紀錄只存在這個瀏覽器，開啟同步後會一起加密同步。</p></form></section><div class="growth-output"><section class="panel chart-card" id="dental-next"><h3>下次塗氟</h3><p id="dental-due" class="dental-due">尚無紀錄</p><p id="dental-status" class="muted"></p><button type="button" class="button primary" id="dental-calendar">設定行事曆提醒</button><p id="dental-remind" class="muted"></p><p class="muted">iPhone／iPad：用 Safari 開啟本頁，按下後會顯示這個行事曆事件，點「加入」；會在下次日期的一個月前早上 9 點提醒（已不到一個月時，改在當天早上 9 點）。在 LINE 等 App 內開啟可能無法加入，請改用 Safari。電腦與 Android 會下載 .ics 檔，可匯入 Google、Outlook 或 Apple 行事曆。</p></section><section class="panel chart-card"><h3>歷次紀錄</h3><p id="dental-empty" class="muted">尚無紀錄。</p><div class="table-scroll"><table class="eye-table"><thead><tr><th>日期</th><th>診所</th><th>備註</th><th></th></tr></thead><tbody id="dental-body"></tbody></table></div></section></div></div></div></section>
+<p>參考範圍不是診斷標準；低於範圍代表值得追蹤，請帶著驗光單與這份紀錄詢問兒童眼科醫師。</p></details></div></div></div><div id="dental" class="vision-block records-tab"><div class="section-head vision-head"><div><p class="eyebrow">BRIGHT SMILES</p><h2>牙齒塗氟紀錄</h2><p>記下每次塗氟；下次建議日期以上次加 6 個月計算，實際間隔請依牙醫建議。</p></div></div><div class="growth-layout"><section class="panel measurement-panel" aria-labelledby="dental-form-title"><h2 id="dental-form-title">這次塗氟</h2><form id="dental-form" autocomplete="off" novalidate><div class="form-grid"><label>塗氟日期<input name="d" type="date" required></label><label>診所（選填）<input name="c" maxlength="20" placeholder="例如：社區牙醫"></label></div><label class="filter-label">備註（選填）<input name="n" maxlength="80" placeholder="例如：順便檢查蛀牙"></label><div class="actions"><button type="submit" class="button primary">存入紀錄</button></div><p id="dental-msg" class="privacy-note" role="status" aria-live="polite"></p><p class="privacy-note">紀錄只存在這個瀏覽器，開啟同步後會一起加密同步。</p></form></section><div class="growth-output"><section class="panel chart-card" id="dental-next"><h3>下次塗氟</h3><p id="dental-due" class="dental-due">尚無紀錄</p><p id="dental-status" class="muted"></p><button type="button" class="button primary" id="dental-calendar">設定行事曆提醒</button><p id="dental-remind" class="muted"></p><p class="muted">iPhone／iPad：用 Safari 開啟本頁，按下後會顯示這個行事曆事件，點「加入」；會在下次日期的一個月前早上 9 點提醒（已不到一個月時，改在當天早上 9 點）。在 LINE 等 App 內開啟可能無法加入，請改用 Safari。電腦與 Android 會下載 .ics 檔，可匯入 Google、Outlook 或 Apple 行事曆。</p></section><section class="panel chart-card"><h3>歷次紀錄</h3><p id="dental-empty" class="muted">尚無紀錄。</p><div class="table-scroll"><table class="eye-table"><thead><tr><th>日期</th><th>診所</th><th>備註</th><th></th></tr></thead><tbody id="dental-body"></tbody></table></div></section></div></div></div><div id="vaccine" class="vision-block records-tab"><div class="section-head vision-head"><div><p class="eyebrow">STAY PROTECTED</p><h2>疫苗接種紀錄</h2><p>記下打過的疫苗與下次預約；預約可以一鍵加入行事曆。接種時程請以兒童健康手冊與醫師安排為準。</p></div></div><div class="growth-layout"><section class="panel measurement-panel" aria-labelledby="vax-form-title"><h2 id="vax-form-title">新增一筆</h2><form id="vax-form" autocomplete="off" novalidate><div class="form-grid"><label>日期<input name="d" type="date" required></label><label>類型<select name="p"><option value="0">已接種</option><option value="1">預約（下次接種）</option></select></label></div><label class="filter-label">疫苗名稱<input name="v" maxlength="30" list="vax-names" placeholder="例如：日本腦炎 第 2 劑"></label><datalist id="vax-names"><option value="B 型肝炎"><option value="五合一（DTaP-Hib-IPV）"><option value="13 價肺炎鏈球菌"><option value="卡介苗（BCG）"><option value="水痘"><option value="MMR（麻疹腮腺炎德國麻疹）"><option value="日本腦炎"><option value="A 型肝炎"><option value="四合一（DTaP-IPV）"><option value="流感"><option value="新冠（COVID-19）"><option value="輪狀病毒（自費）"></datalist><label class="filter-label">備註（選填）<input name="n" maxlength="80" placeholder="例如：診所、劑次、自費"></label><div class="actions"><button type="submit" class="button primary">存入紀錄</button></div><p id="vax-msg" class="privacy-note" role="status" aria-live="polite"></p><p class="privacy-note">紀錄只存在這個瀏覽器，開啟同步後會一起加密同步。</p></form></section><div class="growth-output"><section class="panel chart-card" id="vax-next"><h3>下次接種</h3><p id="vax-none" class="muted">還沒有預約。新增一筆「預約（下次接種）」後，這裡會列出並可設定行事曆提醒。</p><ul id="vax-upcoming" class="vax-list"></ul><p class="muted">會在預約日的一週前早上 9 點提醒（已不到一週時，改在當天早上 9 點）。iPhone／iPad：用 Safari 開啟本頁，按下後點「加入」；為了隱私，iPhone 的行事曆事件只寫「兒童疫苗接種」，不含疫苗名稱。在 LINE 等 App 內開啟可能無法加入，請改用 Safari。電腦與 Android 會下載 .ics 檔。</p></section><section class="panel chart-card"><h3>已接種</h3><p id="vax-empty" class="muted">尚無紀錄。</p><div class="table-scroll"><table class="eye-table"><thead><tr><th>日期</th><th>疫苗</th><th>備註</th><th></th></tr></thead><tbody id="vax-body"></tbody></table></div></section></div></div></div></section>
 <section class="view" id="resources" data-title="線上資源"><div class="page-heading"><div><p class="eyebrow">GOOD THINGS TO EXPLORE</p><h1>給家長的口袋資源</h1><p class="section-lead">27 筆語言、遊戲、蒙特梭利與發展資源。先看用途，需要時再展開年齡、語言與列印資訊。</p></div></div><div class="filters"><div class="filter-row"><div class="search-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg><label class="sr-only" for="resource-search">搜尋資源</label><input id="resource-search" type="search" placeholder="搜尋資源、機構或主題" autocomplete="off"></div><div class="select-wrap"><label class="sr-only" for="resource-domain">資源領域</label><select id="resource-domain"><option value="all">所有領域</option><option value="montessori">蒙特梭利</option><option value="language">語言</option>
 <option value="chinese">中文</option>
 <option value="english">英文</option>
@@ -2228,23 +2228,23 @@
     return early.getTime() > now ? early : at(due);
   }
   const utcStamp = date => date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-  function ics(due, {last, uid, now}) {
-    const remind = reminderAt(due, now);
-    const stampUtc = utcStamp(new Date(now));
+  // One all-day event with a single absolute alarm; shared with vaccine_core.js.
+  function event(due, {uid, now, remind, summary, description, alarm}) {
     const lines = [
       'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//child-development-toolkit//records//ZH-TW',
       'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
-      'BEGIN:VEVENT', `UID:${uid}@child-development-toolkit`, `DTSTAMP:${stampUtc}`,
+      'BEGIN:VEVENT', `UID:${uid}@child-development-toolkit`, `DTSTAMP:${utcStamp(new Date(now))}`,
       `DTSTART;VALUE=DATE:${compact(due)}`, `DTEND;VALUE=DATE:${compact(nextDay(due))}`,
-      `SUMMARY:${esc('兒童牙齒塗氟（半年回診）')}`,
-      `DESCRIPTION:${esc(`上次塗氟：${last}。記得預約牙醫。`)}`,
-      'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${esc('兒童牙齒塗氟，記得預約')}`,
+      `SUMMARY:${esc(summary)}`, `DESCRIPTION:${esc(description)}`,
+      'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${esc(alarm)}`,
       // RFC 5545 durations have no months, so a calendar month needs an absolute trigger.
       `TRIGGER;VALUE=DATE-TIME:${utcStamp(remind)}`, 'END:VALARM',
       'END:VEVENT', 'END:VCALENDAR',
     ];
     return lines.map(fold).join('\r\n') + '\r\n';
   }
+  const ics = (due, {last, uid, now}) => event(due, {uid, now, remind: reminderAt(due, now),
+    summary: '兒童牙齒塗氟（半年回診）', description: `上次塗氟：${last}。記得預約牙醫。`, alarm: '兒童牙齒塗氟，記得預約'});
   function nextDay(iso) {
     const t = new Date(Date.UTC(...iso.split('-').map((v, k) => (k === 1 ? Number(v) - 1 : Number(v)))) + 864e5);
     return t.toISOString().slice(0, 10);
@@ -2260,7 +2260,7 @@
     return `${endpoint.replace(/\/$/, '')}/v1/ics?${q}`;
   }
 
-  const api = {clean, merge, canonical, live, addMonths, nextDue, ics, icsUrl, fold, isAppleMobile, reminderAt, INTERVAL_MONTHS};
+  const api = {clean, merge, canonical, live, addMonths, nextDue, ics, icsUrl, event, utcStamp, dayNumber, fold, isAppleMobile, reminderAt, INTERVAL_MONTHS};
   if (typeof module === 'object' && module.exports) module.exports = api; else root.DentalCore = api;
 })(typeof window !== 'undefined' ? window : globalThis);
 
@@ -2366,6 +2366,151 @@
   load(); renderAll();
 })();
 
+(function (root) {
+  // Vaccine records: {i, d, v, p, n, u, x} -- id, date, vaccine name, planned (not yet given), note, last edit (ms), tombstone.
+  const node = typeof module === 'object' && module.exports;
+  const Eye = node ? require('./eye_core.js') : root.EyeCore;
+  const Dental = node ? require('./dental_core.js') : root.DentalCore;
+  const REMIND_DAYS = 7;
+
+  function clean(r) {
+    if (!r || typeof r !== 'object') return null;
+    const i = Eye.text(r.i, 40);
+    if (!i) return null;
+    if (r.x === true) return {i, x: true, u: Eye.stamp(r)};
+    const d = Eye.validDate(r.d), v = Eye.text(r.v, 30);
+    if (!d || !v) return null;
+    return {i, d, v, p: r.p === true, n: Eye.text(r.n, 80), u: Eye.stamp(r)};
+  }
+  const merge = Eye.mergeWith(clean);
+  const canonical = list => JSON.stringify(merge(list, []));
+  const live = list => merge(list, []).filter(r => !r.x);
+  const given = list => live(list).filter(r => !r.p);
+  const upcoming = (list, today) => live(list).filter(r => r.p)
+    .map(r => ({...r, daysLeft: Dental.dayNumber(r.d) - Dental.dayNumber(today)}));
+
+  // A week before at 09:00 local time; if that has passed, 09:00 on the day itself.
+  function reminderAt(due, now) {
+    const [y, m, d] = due.split('-').map(Number);
+    const early = new Date(y, m - 1, d - REMIND_DAYS, 9, 0, 0);
+    return early.getTime() > now ? early : new Date(y, m - 1, d, 9, 0, 0);
+  }
+  // The vaccine name stays out of the server-built event; only the downloaded file carries it.
+  const ics = (due, {uid, now, name}) => Dental.event(due, {uid, now, remind: reminderAt(due, now),
+    summary: name ? `兒童疫苗接種：${name}` : '兒童疫苗接種',
+    description: `預約接種日：${due}。記得帶兒童健康手冊。`, alarm: '兒童疫苗接種，記得帶兒童健康手冊'});
+  function icsUrl(endpoint, due, {uid, now}) {
+    const q = new URLSearchParams({kind: 'vaccine', due, remind: Dental.utcStamp(reminderAt(due, now)), uid});
+    return `${endpoint.replace(/\/$/, '')}/v1/ics?${q}`;
+  }
+
+  const api = {clean, merge, canonical, live, given, upcoming, reminderAt, ics, icsUrl, REMIND_DAYS};
+  if (node) module.exports = api; else root.VaccineCore = api;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+(() => {
+  const V = window.VaccineCore, D = window.DentalCore, E = window.EyeCore, form = document.getElementById('vax-form');
+  if (!V || !D || !E || !form) return;
+  const KEY = 'education-vaccine-records-v1', ENDPOINT = 'https://growth-sync.dennischan0909.workers.dev';
+  const $ = id => document.getElementById(id);
+  const msg = $('vax-msg');
+  let all = [], applying = false;
+  const listeners = [];
+
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; };
+  const iso = n => `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`;
+  const today = () => iso(new Date());
+  const button = (text, cls, fn) => { const b = el('button', cls, text); b.type = 'button'; b.addEventListener('click', fn); return b; };
+
+  function load() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      all = saved && Array.isArray(saved.records) ? V.merge(saved.records, []) : [];
+    } catch (error) { all = []; }
+  }
+  function persist() {
+    try { localStorage.setItem(KEY, JSON.stringify({v: 1, records: all})); }
+    catch (error) { msg.textContent = '這個瀏覽器不允許保存資料，紀錄只會留到關閉頁面。'; }
+    if (!applying) listeners.forEach(fn => fn());
+  }
+  const change = r => { all = V.merge(all, [r]); persist(); renderAll(); };
+  const remove = r => { if (confirm(`刪除 ${r.d} 的「${r.v}」？`)) change({i: r.i, x: true, u: Date.now()}); };
+
+  // iPhone/iPad: open the sync worker's text/calendar URL, which Safari shows as an event to add.
+  // Elsewhere: download the .ics for import into Google, Outlook or Apple Calendar.
+  function addToCalendar(r) {
+    const opts = {uid: E.newId(), now: Date.now()};
+    if (ENDPOINT && D.isAppleMobile(navigator.userAgent, navigator.platform, navigator.maxTouchPoints)) {
+      location.href = V.icsUrl(ENDPOINT, r.d, opts);
+      return;
+    }
+    const url = URL.createObjectURL(new Blob([V.ics(r.d, {...opts, name: r.v})], {type: 'text/calendar;charset=utf-8'}));
+    const a = el('a'); a.href = url; a.download = `vaccine-${r.d}.ics`;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  }
+
+  function renderNext() {
+    const list = $('vax-upcoming');
+    list.replaceChildren();
+    const rows = V.upcoming(all, today());
+    $('vax-none').hidden = rows.length > 0;
+    rows.forEach(r => {
+      const li = el('li', r.daysLeft < 0 ? 'vax-item overdue' : 'vax-item');
+      const when = r.daysLeft > 0 ? `還有 ${r.daysLeft} 天` : r.daysLeft === 0 ? '就是今天' : `已過 ${-r.daysLeft} 天，打了嗎？`;
+      const remind = iso(V.reminderAt(r.d, Date.now()));
+      li.append(el('p', 'vax-date', r.d), el('p', 'vax-name', r.v), el('p', 'muted', `${when}${r.daysLeft >= 0 ? `　提醒日：${remind} 早上 9 點` : ''}`));
+      if (r.n) li.append(el('p', 'muted', r.n));
+      const actions = el('div', 'vax-actions');
+      actions.append(
+        button('設定行事曆提醒', 'button primary', () => addToCalendar(r)),
+        button('已接種', 'button', () => { change({...r, p: false, u: Date.now()}); msg.textContent = `已把 ${r.d} 的「${r.v}」改成已接種。`; }),
+        button('刪除', 'button quiet', () => remove(r)));
+      li.append(actions);
+      list.append(li);
+    });
+  }
+  function renderTable() {
+    const body = $('vax-body');
+    body.replaceChildren();
+    const rows = V.given(all).reverse();
+    $('vax-empty').hidden = rows.length > 0;
+    rows.forEach(r => {
+      const tr = el('tr');
+      tr.append(el('td', '', r.d), el('td', '', r.v), el('td', 'eye-note', r.n || ''));
+      const td = el('td'); td.append(button('刪除', 'button quiet', () => remove(r))); tr.append(td);
+      body.append(tr);
+    });
+  }
+  function renderAll() { renderNext(); renderTable(); }
+
+  // A date after today is almost always an appointment; switch the choice so it is right by default.
+  form.elements.d.addEventListener('change', () => { if (form.elements.d.value) form.elements.p.value = form.elements.d.value > today() ? '1' : '0'; });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const f = form.elements;
+    if (!f.d.value) { msg.textContent = '請填日期。'; return; }
+    if (!f.v.value.trim()) { msg.textContent = '請填疫苗名稱。'; return; }
+    const r = V.clean({i: E.newId(), u: Date.now(), d: f.d.value, v: f.v.value, p: f.p.value === '1', n: f.n.value});
+    if (!r) { msg.textContent = '日期格式不正確。'; return; }
+    change(r);
+    msg.textContent = r.p ? `已存入 ${r.d} 的預約，可以在「下次接種」設定行事曆提醒。` : `已存入 ${r.d} 的接種紀錄。`;
+    form.reset(); f.d.value = today();
+  });
+
+  // Used by the optional sync module; apply() takes an already-merged list without re-stamping it.
+  window.VaccineStore = {
+    snapshot: () => all.map(r => ({...r})),
+    onChange: fn => listeners.push(fn),
+    apply(list) {
+      applying = true;
+      try { all = V.merge(list, []); persist(); renderAll(); } finally { applying = false; }
+    },
+  };
+  form.elements.d.value = today();
+  load(); renderAll();
+})();
+
 /*SYNC-START*/
 (function (root) {
   'use strict';
@@ -2445,6 +2590,7 @@
   // Eye records ride in the same encrypted blob; a client without eye_core.js keeps the field as-is.
   const Eye = typeof module === 'object' && module.exports ? require('./eye_core.js') : root.EyeCore;
   const Dental = typeof module === 'object' && module.exports ? require('./dental_core.js') : root.DentalCore;
+  const Vaccine = typeof module === 'object' && module.exports ? require('./vaccine_core.js') : root.VaccineCore;
   const sortedRecords = list => list.slice().sort((a, b) => a.d.localeCompare(b.d));
   function canonical(snapshot) {
     return JSON.stringify({
@@ -2452,6 +2598,7 @@
       records: sortedRecords(snapshot.records || []).map(r => [r.d, r.h === undefined ? null : r.h, r.w === undefined ? null : r.w, stamp(r), r.x ? 1 : 0]),
       eye: Eye ? Eye.canonical(snapshot.eye) : JSON.stringify(snapshot.eye || []),
       dental: Dental ? Dental.canonical(snapshot.dental) : JSON.stringify(snapshot.dental || []),
+      vax: Vaccine ? Vaccine.canonical(snapshot.vax) : JSON.stringify(snapshot.vax || []),
     });
   }
   const equal = (a, b) => canonical(a) === canonical(b);
@@ -2465,7 +2612,8 @@
     const meta = (b.mu || 0) > (a.mu || 0) ? b : a;
     const eye = Eye ? Eye.merge(a.eye, b.eye) : (a.eye || b.eye || []);
     const dental = Dental ? Dental.merge(a.dental, b.dental) : (a.dental || b.dental || []);
-    return {version: 2, nick: typeof meta.nick === 'string' ? meta.nick : (a.nick || b.nick || ''), sex: meta.sex || a.sex || b.sex || null, birth: meta.birth || a.birth || b.birth || null, mu: Math.max(a.mu || 0, b.mu || 0), records: sortedRecords([...byDate.values()]), eye, dental};
+    const vax = Vaccine ? Vaccine.merge(a.vax, b.vax) : (a.vax || b.vax || []);
+    return {version: 2, nick: typeof meta.nick === 'string' ? meta.nick : (a.nick || b.nick || ''), sex: meta.sex || a.sex || b.sex || null, birth: meta.birth || a.birth || b.birth || null, mu: Math.max(a.mu || 0, b.mu || 0), records: sortedRecords([...byDate.values()]), eye, dental, vax};
   }
 
   const api = {generateCode, parseCode, deriveKeys, generatePairToken, parsePairToken, derivePair, encrypt, decrypt, merge, equal, canonical, CODE_CHARS};
@@ -2476,8 +2624,8 @@
   const ENDPOINT = 'https://growth-sync.dennischan0909.workers.dev', QR_SRC = 'qr.js?v=2bb4e92066';
   const $ = id => document.getElementById(id), box = $('sync-box');
   const Core = window.GrowthSyncCore, Growth = window.GrowthStore;
-  // One blob carries every record store; the eye and dental lists are optional.
-  const extra = [['eye', window.EyeStore], ['dental', window.DentalStore]].filter(([, s]) => s);
+  // One blob carries every record store; the eye, dental and vaccine lists are optional.
+  const extra = [['eye', window.EyeStore], ['dental', window.DentalStore], ['vax', window.VaccineStore]].filter(([, s]) => s);
   const Store = Growth && {
     snapshot: () => Object.assign(Growth.snapshot(), ...extra.map(([k, s]) => ({[k]: s.snapshot()}))),
     apply: s => { Growth.apply(s); extra.forEach(([k, st]) => st.apply(s[k] || [])); },
